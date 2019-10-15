@@ -1,0 +1,491 @@
+@prefix : <http://pokemon.outofbits.com/ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix poketype: <http://pokemon.outofbits.com/ontology#PokéType:> .
+@base <http://pokemon.outofbits.com/ontology> .
+
+<http://pokemon.outofbits.com/ontology> rdf:type owl:Ontology ;
+                                         owl:versionIRI <http://pokemon.outofbits.com/ontology/version/1.0.0> ;
+                                         owl:imports <http://xmlns.com/foaf/0.1/> ;
+                                         cc:attributionName "Kevin Haller" ;
+                                         cc:attributionURL "http://pokemon.outofbits.com/ontology"^^xsd:anyURI ;
+                                         cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                         dcterms:created "2019-07-27T23:00:00"@en ;
+                                         dcterms:creator <http://kevin-haller.outofbits.com/me> ;
+                                         dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
+                                                             "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
+                                         dcterms:title "Pokémon Ontologie"@de ,
+                                                       "Pokémon Ontology"@en ;
+                                         bibo:status <http://purl.org/ontology/bibo/status/draft> ;
+                                         vann:preferredNamespacePrefix "poke" ;
+                                         vann:preferredNamespaceUri "http://pokemon.outofbits.com/ontology#"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#attributionName
+cc:attributionName rdf:type owl:AnnotationProperty .
+
+
+###  http://creativecommons.org/ns#attributionURL
+cc:attributionURL rdf:type owl:AnnotationProperty .
+
+
+###  http://creativecommons.org/ns#license
+cc:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/ontology/bibo/status
+bibo:status rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://pokemon.outofbits.com/ontology#containsPlace
+:containsPlace rdf:type owl:ObjectProperty ;
+               owl:inverseOf :locatedIn ;
+               rdf:type owl:AsymmetricProperty ,
+                        owl:TransitiveProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :Place
+                                           :Region
+                                         )
+                           ] ;
+               rdfs:range :Place ;
+               rdfs:comment "A place is contained to some extent in this place."@en ;
+               rdfs:label "contains place"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#describedInPokédex
+:describedInPokédex rdf:type owl:ObjectProperty ;
+                    owl:inverseOf :describesPokémon ;
+                    rdfs:domain :Pokémon ;
+                    rdfs:range :PokédexEntry ;
+                    rdfs:label "described in Pokédex entry"@en ,
+                               "in Pokédex Eintrag beschrieben"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#describesPokémon
+:describesPokémon rdf:type owl:ObjectProperty ;
+                  rdfs:domain :PokédexEntry ;
+                  rdfs:range :Pokémon ;
+                  rdfs:comment "A Pokémon that is described by this Pokédex entry."@en ,
+                               "Ein Pokémon, das von diesem Pokédex Eintrag beschrieben wird."@de ;
+                  rdfs:label "beschreibt Pokémon"@de ,
+                             "describes Pokémon"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#evolvesFrom
+:evolvesFrom rdf:type owl:ObjectProperty ;
+             rdfs:domain :Pokémon ;
+             rdfs:range :Pokémon ;
+             rdfs:label "evolves from"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#evolvesTo
+:evolvesTo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Pokémon ;
+           rdfs:range :Pokémon ;
+           rdfs:label "evolves to"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#featuresPokémon
+:featuresPokémon rdf:type owl:ObjectProperty ;
+                 rdfs:range :Pokémon ;
+                 owl:propertyChainAxiom ( :hasPokédexEntry
+                                          :describesPokémon
+                                        ) ;
+                 rdfs:label "features Pokémon"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#hasPokédexEntry
+:hasPokédexEntry rdf:type owl:ObjectProperty ,
+                          owl:InverseFunctionalProperty ;
+                 rdfs:domain :Pokédex ;
+                 rdfs:range :PokédexEntry ;
+                 rdfs:comment "A Pokédex entry in which this Pokémon is described."@en ,
+                              "Ein Pokédex Eintrag in welchen über dieses Pokémon informiert wird."@de ;
+                 rdfs:label "has Pokédex entry"@en ,
+                            "hat Pokédex Eintrag"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#hasType
+:hasType rdf:type owl:ObjectProperty ;
+         rdfs:range :Type .
+
+
+###  http://pokemon.outofbits.com/ontology#locatedIn
+:locatedIn rdf:type owl:ObjectProperty ,
+                    owl:AsymmetricProperty ,
+                    owl:TransitiveProperty ;
+           rdfs:domain :Place ;
+           rdfs:range :Place ;
+           rdfs:comment "This place is located to some extent in a place."@en ;
+           rdfs:label "located in"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#takesPlaceInRegion
+:takesPlaceInRegion rdf:type owl:ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Class ;
+                                  owl:unionOf ( :Game
+                                                :Generation
+                                              )
+                                ] ;
+                    rdfs:range :Region ;
+                    rdfs:comment "Die Region in welcher dieses Spiel stattfindet."@de ,
+                                 "The region in which this game is taking place."@en ;
+                    rdfs:label "findet statt in der Region"@de ,
+                               "takes place in region"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://pokemon.outofbits.com/ontology#effectDescription
+:effectDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Ability
+                                               :Move
+                                             )
+                               ] ;
+                   rdfs:comment "effect description"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#entryNumber
+:entryNumber rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :PokédexEntry ;
+             rdfs:range xsd:int ;
+             rdfs:comment "Der Pokédex Eintrag hat folgende Nummer, die eindeutig sein muss."@de ,
+                          "This Pokédex entry has the given number, which has to be unique."@en ;
+             rdfs:label "has entry number"@en ,
+                        "hat Eintragsnummer"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#hasColor
+:hasColor rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Pokémon ;
+          rdfs:label "has color"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#species
+:species rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Pokémon ;
+         rdfs:label ""@en ,
+                    "is of species"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://pokemon.outofbits.com/ontology#Ability
+:Ability rdf:type owl:Class ;
+         rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ;
+         rdfs:label "Ability"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Game
+:Game rdf:type owl:Class ;
+      rdfs:label "Game"@en ,
+                 "Spiel"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Generation
+:Generation rdf:type owl:Class ;
+            rdfs:comment "Generation bezieht sich auf die Pokémon-Spieleserie. Es ist eine Gruppe von Spielen, die zur gleichen Zeit oder etwa zur gleichen Zeit veröffentlicht wurden. Es bedeutet auch, dass Spiele in der gleichen Generation mit den anderen kompatibel sind, die den gleichen Pokémon enthalten und die Anzahl der Züge, die dort gelernt werden müssen."@de ,
+                         "Generation refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned."@en ;
+            rdfs:label "Generation"@de ,
+                       "Generation"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Gym
+:Gym rdf:type owl:Class ;
+     rdfs:subClassOf :Place ;
+     rdfs:label "Arena"@de ,
+                "Gym"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#GymLeader
+:GymLeader rdf:type owl:Class ;
+           rdfs:subClassOf :Trainer ;
+           rdfs:comment "A gym leader is the highest-ranking member and owner of an official Pokémon Gym. Gym leaders use their gyms and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them with a badge that's unique to that specific gym."@en ;
+           rdfs:label "Arenaleiter"@de ,
+                      "Gym Leader"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Move
+:Move rdf:type owl:Class ;
+      rdfs:comment "A Move is a technique that a Pokémon uses during Battles. Moves are mainly used to inflict damage on the opponent. Moves usually come from a natural ability that the specific Pokémon has. Some moves can be used both inside and outside of battle. When outside of battle, moves are usually used for transportation or for removing a certain obstacle that the player runs into in the game."@en ,
+                   "Eine Aktion ist eine Technik, die ein Pokémon während eines Kampfes anwendet. Züge werden hauptsächlich verwendet, um dem Gegner Schaden zuzufügen. Züge kommen normalerweise von einer natürlichen Fähigkeit, die der bestimmte Pokémon hat. Einige Züge können sowohl innerhalb als auch außerhalb des Kampfes verwendet werden. Außerhalb des Kampfes werden Züge normalerweise für den Transport oder zum Entfernen eines bestimmten Hindernisses verwendet, auf das der Spieler im Spiel stößt."@de ;
+      rdfs:label "Aktion"@de ,
+                 "Move"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PhysicalMove
+:PhysicalMove rdf:type owl:Class ;
+              rdfs:subClassOf :Move ;
+              rdfs:label "Physical Move"@en ,
+                         "Physische Aktion"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#Place
+:Place rdf:type owl:Class ;
+       rdfs:comment "Entities that have a somewhat fixed, physical extension in a region."@en ;
+       rdfs:label "Place"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Pokédex
+:Pokédex rdf:type owl:Class ;
+         owl:disjointUnionOf ( :Pokémon
+                               :Type
+                             ) ;
+         rdfs:comment "The Pokédex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series."@en ;
+         rdfs:label "Pokédex"@de ,
+                    "Pokédex"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokédexEntry
+:PokédexEntry rdf:type owl:Class ;
+              owl:disjointUnionOf ( :Move
+                                    :Pokédex
+                                    :Pokémon
+                                    :Type
+                                  ) ;
+              rdfs:label "Pokédex Eintrag"@de ,
+                         "Pokédex Entry"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Pokémon
+:Pokémon rdf:type owl:Class ;
+         owl:disjointUnionOf ( :Pokédex
+                               :Type
+                             ) ;
+         rdfs:label "Pokémon"@de ,
+                    "Pokémon"@en ;
+         rdfs:seeAlso <http://dbpedia.org/resource/Pok%C3%A9mon> .
+
+
+###  http://pokemon.outofbits.com/ontology#Region
+:Region rdf:type owl:Class ;
+        rdfs:comment "Regions are areas in the Pokémon universe that are smaller parts of a nation. Each region has their own Pokémon Professor, who provides a unique set of Starter Pokémon for young Trainers. Each region also has a unique set of eight Gym Leaders, along with the regional Elite Four."@en ;
+        rdfs:label "Region"@de ,
+                   "Region"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#SpecialMove
+:SpecialMove rdf:type owl:Class ;
+             rdfs:subClassOf :Move ;
+             rdfs:label "Special Move"@en ,
+                        "Spezialaktion"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#StatusMove
+:StatusMove rdf:type owl:Class ;
+            rdfs:subClassOf :Move ;
+            rdfs:label "Status Move"@en ,
+                       "Statusaktion"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#Town
+:Town rdf:type owl:Class ;
+      rdfs:subClassOf :Place ;
+      rdfs:label "Stadt"@de ,
+                 "Town"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Trainer
+:Trainer rdf:type owl:Class ;
+         rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
+         rdfs:comment "Pokémon Trainer is the term commonly used for a person who catches, occasionally names, and trains several different kinds and types of Pokémon."@en ;
+         rdfs:label "Trainer"@de ,
+                    "Trainer"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Type
+:Type rdf:type owl:Class ;
+      owl:disjointUnionOf ( :Pokédex
+                            :Pokémon
+                          ) ;
+      rdfs:comment "All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense."@en ,
+                   "Allen Pokémon-Kreaturen und ihren Attacken werden bestimmte Typen zugeordnet. Jeder Typ hat mehrere Stärken und Schwächen sowohl in Angriff als auch in Verteidigung."@de ;
+      rdfs:label "Typ"@de ,
+                 "Type"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Bug
+:PokéType_Bug rdf:type owl:NamedIndividual ,
+                       :Type ;
+              rdfs:label "Bug"@en ,
+                         "Käfer"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Dark
+:PokéType_Dark rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:label "Dark"@en ,
+                          "Finsternis/Unlicht"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Dragon
+:PokéType_Dragon rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:label "Drachen"@de ,
+                            "Dragon"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Electric
+:PokéType_Electric rdf:type owl:NamedIndividual ,
+                            :Type ;
+                   rdfs:comment "Es gibt relativ wenige Electric Pokémon; tatsächlich wurden in der dritten Generation nur vier hinzugefügt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de ,
+                                "There are relatively few Electric Pokémon; in fact only four were added in the third generation. Most are based on rodents or inanimate objects."@en ;
+                   rdfs:label "Electric"@en ,
+                              "Elektro"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Fairy
+:PokéType_Fairy rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:label "Fairy"@en ,
+                           "Fee"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Fighting
+:PokéType_Fighting rdf:type owl:NamedIndividual ,
+                            :Type ;
+                   rdfs:label "Fighting"@en ,
+                              "Kampf"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Fire
+:PokéType_Fire rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Feuerarten sind in den frühen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de ,
+                            "Fire is one of the three basic elemental types along with Water and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Fire types are notoriously rare in the early stages of the games so choosing the Fire variation starter is often a plus."@en ;
+               rdfs:label "Feuer"@de ,
+                          "Fire"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Flying
+:PokéType_Flying rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:label "Flug"@de ,
+                            "Flying"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Ghost
+:PokéType_Ghost rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:label "Geist"@de ,
+                           "Ghost"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Grass
+:PokéType_Grass rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären."@de ,
+                             "Grass is one of the three basic elemental types along with Fire and Water, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players."@en ;
+                rdfs:label "Grass"@en ,
+                           "Pflanze"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Ground
+:PokéType_Ground rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:label "Boden"@de ,
+                            "Ground"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Ice
+:PokéType_Ice rdf:type owl:NamedIndividual ,
+                       :Type ;
+              rdfs:label "Eis"@de ,
+                         "Ice"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Normal
+:PokéType_Normal rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:comment "Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen."@de ,
+                              "The Normal type is the most basic type of Pokémon. They are very common and appear from the very first route you visit. Most Normal Pokémon are single type."@en ;
+                 rdfs:label "Normal"@de ,
+                            "Normal"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Poison
+:PokéType_Poison rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:label "Gift"@de ,
+                            "Poison"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Psychic
+:PokéType_Psychic rdf:type owl:NamedIndividual ,
+                           :Type ;
+                  rdfs:label "Psychic"@en ,
+                             "Psycho"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Rock
+:PokéType_Rock rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:label "Gestein"@de ,
+                          "Rock"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Steel
+:PokéType_Steel rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:label "Stahl"@de ,
+                           "Steel"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#PokéType_Water
+:PokéType_Water rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de ,
+                             "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
+                rdfs:label "Wasser"@de ,
+                           "Water"@en .
+
+
+###  Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi
