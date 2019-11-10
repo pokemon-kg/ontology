@@ -132,6 +132,14 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "features Pokémon"@en .
 
 
+###  http://pokemon.outofbits.com/ontology#hasFlavor
+:hasFlavor rdf:type owl:ObjectProperty ;
+           rdfs:domain :Berry ;
+           rdfs:range :Flavor ;
+           rdfs:label "has flavor"@en ,
+                      "hat Geschmacksrichtung"@de .
+
+
 ###  http://pokemon.outofbits.com/ontology#hasPokédexEntry
 :hasPokédexEntry rdf:type owl:ObjectProperty ,
                           owl:InverseFunctionalProperty ;
@@ -197,17 +205,34 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                         "hat Eintragsnummer"@de .
 
 
+###  http://pokemon.outofbits.com/ontology#firmness
+:firmness rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Food ;
+          rdfs:range xsd:integer ;
+          rdfs:label "has firmness"@en ,
+                     "hat Güte"@de .
+
+
 ###  http://pokemon.outofbits.com/ontology#hasColor
 :hasColor rdf:type owl:DatatypeProperty ;
           rdfs:domain :Pokémon ;
-          rdfs:label "has color"@en .
+          rdfs:label "has color"@en ,
+                     "hat Farbe"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#smoothness
+:smoothness rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Food ;
+            rdfs:range xsd:integer ;
+            rdfs:label "has smoothness"@en ,
+                       "hat Glätte"@de .
 
 
 ###  http://pokemon.outofbits.com/ontology#species
 :species rdf:type owl:DatatypeProperty ;
          rdfs:domain :Pokémon ;
-         rdfs:label ""@en ,
-                    "is of species"@en .
+         rdfs:label "is of species"@en ,
+                    "ist von Spezie"@de .
 
 
 #################################################################
@@ -216,8 +241,32 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  http://pokemon.outofbits.com/ontology#Ability
 :Ability rdf:type owl:Class ;
-         rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ;
-         rdfs:label "Ability"@en .
+         rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ,
+                      "Fähigkeiten wurden in Generation III als völlig neue Spielmechanik eingeführt. Jeder einzelne Pokémon hat eine Fähigkeit und kann nur eine auf einmal haben. Einige Fähigkeiten sind exklusiv für bestimmte Pokémon- und Evolutionslinien, während andere von vielen Pokémon bekannt sind."@de ;
+         rdfs:label "Ability"@en ,
+                    "Fähigkeit"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#Berry
+:Berry rdf:type owl:Class ;
+       rdfs:subClassOf :Food ;
+       rdfs:comment "Beeren sind kleine, saftige, fleischige Früchte. Wie in der realen Welt gibt es auch in der Pokémon-Welt eine große Vielfalt mit einer großen Auswahl an Geschmacksrichtungen, Namen und Effekten. Erstmals in den Spielen der Generation II gefunden, sind viele Beeren inzwischen zu kritischen Gegenständen im Kampf geworden, wo ihre verschiedenen Effekte die Wiederherstellung von HP und Statuszustand, Statikverbesserung und sogar Schadensverneinung beinhalten."@de ,
+                    "Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since become critical held items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation."@en ;
+       rdfs:label "Beere"@de ,
+                  "Berry"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Flavor
+:Flavor rdf:type owl:Class ;
+        rdfs:comment """Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor attributed to them.
+
+The primary flavor mechanic is taste preferences: different Pokémon like and dislike different flavors, depending on their Nature. This usually influences the effectiveness of the food. The flavors that a Pokémon likes and dislikes correspond to the stat that its Nature raises or lowers. For example, all Pokémon who like spicy flavors have a Nature that raises their Attack, while those that dislike spicy flavors have a Nature that lowers it. Pokémon who have neutral Natures have no likes or dislikes."""@en ;
+        rdfs:label "Flavor"@en ,
+                   "Geschmacksrichtung"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#Food
+:Food rdf:type owl:Class .
 
 
 ###  http://pokemon.outofbits.com/ontology#Game
@@ -267,7 +316,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  http://pokemon.outofbits.com/ontology#Place
 :Place rdf:type owl:Class ;
        rdfs:comment "Entities that have a somewhat fixed, physical extension in a region."@en ;
-       rdfs:label "Place"@en .
+       rdfs:label "Ort"@de ,
+                  "Place"@en .
 
 
 ###  http://pokemon.outofbits.com/ontology#Pokédex
@@ -275,7 +325,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
          owl:disjointUnionOf ( :Pokémon
                                :Type
                              ) ;
-         rdfs:comment "The Pokédex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series."@en ;
+         rdfs:comment "Der Pokédex ist ein elektronisches Gerät, das entwickelt wurde, um die verschiedenen Arten von Pokémon zu katalogisieren und Informationen über sie zu liefern, die in den Videospiel-, Anime und Manga-Serien von Pokémon enthalten sind."@de ,
+                      "The Pokédex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series."@en ;
          rdfs:label "Pokédex"@de ,
                     "Pokédex"@en .
 
@@ -332,7 +383,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  http://pokemon.outofbits.com/ontology#Trainer
 :Trainer rdf:type owl:Class ;
          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
-         rdfs:comment "Pokémon Trainer is the term commonly used for a person who catches, occasionally names, and trains several different kinds and types of Pokémon."@en ;
+         rdfs:comment "Pokémon Trainer is the term commonly used for a person who catches, occasionally names, and trains several different kinds and types of Pokémon."@en ,
+                      "Pokémon Trainer ist der Begriff, der häufig für eine Person verwendet wird, die mehrere verschiedene Arten und Arten von Pokémon fängt, gelegentlich benennt und trainiert."@de ;
          rdfs:label "Trainer"@de ,
                     "Trainer"@en .
 
@@ -488,4 +540,4 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                            "Water"@en .
 
 
-###  Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
