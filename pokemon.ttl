@@ -71,6 +71,10 @@ vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#altLabel
+<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
+
+
 #################################################################
 #    Object Properties
 #################################################################
@@ -243,8 +247,15 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :Ability rdf:type owl:Class ;
          rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ,
                       "Fähigkeiten wurden in Generation III als völlig neue Spielmechanik eingeführt. Jeder einzelne Pokémon hat eine Fähigkeit und kann nur eine auf einmal haben. Einige Fähigkeiten sind exklusiv für bestimmte Pokémon- und Evolutionslinien, während andere von vielen Pokémon bekannt sind."@de ;
+         rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
          rdfs:label "Ability"@en ,
                     "Fähigkeit"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#BattleItem
+:BattleItem rdf:type owl:Class ;
+            rdfs:subClassOf :Item ;
+            rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> .
 
 
 ###  http://pokemon.outofbits.com/ontology#Berry
@@ -252,6 +263,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
        rdfs:subClassOf :Food ;
        rdfs:comment "Beeren sind kleine, saftige, fleischige Früchte. Wie in der realen Welt gibt es auch in der Pokémon-Welt eine große Vielfalt mit einer großen Auswahl an Geschmacksrichtungen, Namen und Effekten. Erstmals in den Spielen der Generation II gefunden, sind viele Beeren inzwischen zu kritischen Gegenständen im Kampf geworden, wo ihre verschiedenen Effekte die Wiederherstellung von HP und Statuszustand, Statikverbesserung und sogar Schadensverneinung beinhalten."@de ,
                     "Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since become critical held items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation."@en ;
+       rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
        rdfs:label "Beere"@de ,
                   "Berry"@en .
 
@@ -261,24 +273,29 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
         rdfs:comment """Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor attributed to them.
 
 The primary flavor mechanic is taste preferences: different Pokémon like and dislike different flavors, depending on their Nature. This usually influences the effectiveness of the food. The flavors that a Pokémon likes and dislikes correspond to the stat that its Nature raises or lowers. For example, all Pokémon who like spicy flavors have a Nature that raises their Attack, while those that dislike spicy flavors have a Nature that lowers it. Pokémon who have neutral Natures have no likes or dislikes."""@en ;
+        rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
         rdfs:label "Flavor"@en ,
                    "Geschmacksrichtung"@de .
 
 
 ###  http://pokemon.outofbits.com/ontology#Food
-:Food rdf:type owl:Class .
+:Food rdf:type owl:Class ;
+      rdfs:subClassOf :Item ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> .
 
 
 ###  http://pokemon.outofbits.com/ontology#Game
 :Game rdf:type owl:Class ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
       rdfs:label "Game"@en ,
-                 "Spiel"@en .
+                 "Spiel"@de .
 
 
 ###  http://pokemon.outofbits.com/ontology#Generation
 :Generation rdf:type owl:Class ;
             rdfs:comment "Generation bezieht sich auf die Pokémon-Spieleserie. Es ist eine Gruppe von Spielen, die zur gleichen Zeit oder etwa zur gleichen Zeit veröffentlicht wurden. Es bedeutet auch, dass Spiele in der gleichen Generation mit den anderen kompatibel sind, die den gleichen Pokémon enthalten und die Anzahl der Züge, die dort gelernt werden müssen."@de ,
                          "Generation refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned."@en ;
+            rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
             rdfs:label "Generation"@de ,
                        "Generation"@en .
 
@@ -286,6 +303,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  http://pokemon.outofbits.com/ontology#Gym
 :Gym rdf:type owl:Class ;
      rdfs:subClassOf :Place ;
+     rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
      rdfs:label "Arena"@de ,
                 "Gym"@en .
 
@@ -294,14 +312,42 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 :GymLeader rdf:type owl:Class ;
            rdfs:subClassOf :Trainer ;
            rdfs:comment "A gym leader is the highest-ranking member and owner of an official Pokémon Gym. Gym leaders use their gyms and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them with a badge that's unique to that specific gym."@en ;
+           rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
            rdfs:label "Arenaleiter"@de ,
                       "Gym Leader"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#HoldItem
+:HoldItem rdf:type owl:Class ;
+          rdfs:subClassOf :Item ;
+          rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> .
+
+
+###  http://pokemon.outofbits.com/ontology#Item
+:Item rdf:type owl:Class ;
+      rdfs:comment "An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area."@en ,
+                   "Ein Gegenstand ist ein Objekt in den Pokémon-Spielen, welches der Spieler aufheben, in seiner Tasche aufbewahren und in irgendeiner Weise verwenden kann. Sie haben verschiedene Verwendungsmöglichkeiten, einschließlich Heilung, Auftanken, Hilfe beim Fangen von Pokémon oder beim Betreten eines neuen Gebietes."@de ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
+      rdfs:label "Item"@de ,
+                 "Item"@en ;
+      <http://www.w3.org/2004/02/skos/core#altLabel> "Gegenstand"@de .
+
+
+###  http://pokemon.outofbits.com/ontology#Medicine
+:Medicine rdf:type owl:Class ;
+          rdfs:subClassOf :Item ;
+          rdfs:comment "Medicine items can heal various afflictions of a Pokémon."@en ,
+                       "Medizin kann verschiedene Leiden eines Pokémon heilen."@de ;
+          rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
+          rdfs:label "Medicine"@en ,
+                     "Medizin"@de .
 
 
 ###  http://pokemon.outofbits.com/ontology#Move
 :Move rdf:type owl:Class ;
       rdfs:comment "A Move is a technique that a Pokémon uses during Battles. Moves are mainly used to inflict damage on the opponent. Moves usually come from a natural ability that the specific Pokémon has. Some moves can be used both inside and outside of battle. When outside of battle, moves are usually used for transportation or for removing a certain obstacle that the player runs into in the game."@en ,
                    "Eine Aktion ist eine Technik, die ein Pokémon während eines Kampfes anwendet. Züge werden hauptsächlich verwendet, um dem Gegner Schaden zuzufügen. Züge kommen normalerweise von einer natürlichen Fähigkeit, die der bestimmte Pokémon hat. Einige Züge können sowohl innerhalb als auch außerhalb des Kampfes verwendet werden. Außerhalb des Kampfes werden Züge normalerweise für den Transport oder zum Entfernen eines bestimmten Hindernisses verwendet, auf das der Spieler im Spiel stößt."@de ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
       rdfs:label "Aktion"@de ,
                  "Move"@en .
 
@@ -309,15 +355,28 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  http://pokemon.outofbits.com/ontology#PhysicalMove
 :PhysicalMove rdf:type owl:Class ;
               rdfs:subClassOf :Move ;
+              rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
               rdfs:label "Physical Move"@en ,
                          "Physische Aktion"@de .
 
 
 ###  http://pokemon.outofbits.com/ontology#Place
 :Place rdf:type owl:Class ;
-       rdfs:comment "Entities that have a somewhat fixed, physical extension in a region."@en ;
+       rdfs:comment "Entities that have a somewhat fixed, physical extension in a region."@en ,
+                    "Entitäten, die in einer Region eine einigermaßen feste, physische Ausdehnung haben."@de ;
+       rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
        rdfs:label "Ort"@de ,
                   "Place"@en .
+
+
+###  http://pokemon.outofbits.com/ontology#Pokéball
+:Pokéball rdf:type owl:Class ;
+          rdfs:subClassOf :Item ;
+          rdfs:comment "A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon."@en ,
+                       "Ein Poké-Ball ist eine Art von Gegenstand, der für die Aufgabe eines Trainers entscheidend ist und zum Fangen und Aufbewahren von Pokémon verwendet wird."@de ;
+          rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
+          rdfs:label "Poké Ball"@de ,
+                     "Poké Ball"@en .
 
 
 ###  http://pokemon.outofbits.com/ontology#Pokédex
@@ -327,6 +386,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
                              ) ;
          rdfs:comment "Der Pokédex ist ein elektronisches Gerät, das entwickelt wurde, um die verschiedenen Arten von Pokémon zu katalogisieren und Informationen über sie zu liefern, die in den Videospiel-, Anime und Manga-Serien von Pokémon enthalten sind."@de ,
                       "The Pokédex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series."@en ;
+         rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
          rdfs:label "Pokédex"@de ,
                     "Pokédex"@en .
 
@@ -338,6 +398,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
                                     :Pokémon
                                     :Type
                                   ) ;
+              rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
               rdfs:label "Pokédex Eintrag"@de ,
                          "Pokédex Entry"@en .
 
@@ -347,6 +408,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
          owl:disjointUnionOf ( :Pokédex
                                :Type
                              ) ;
+         rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
          rdfs:label "Pokémon"@de ,
                     "Pokémon"@en ;
          rdfs:seeAlso <http://dbpedia.org/resource/Pok%C3%A9mon> .
@@ -354,7 +416,9 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 
 ###  http://pokemon.outofbits.com/ontology#Region
 :Region rdf:type owl:Class ;
-        rdfs:comment "Regions are areas in the Pokémon universe that are smaller parts of a nation. Each region has their own Pokémon Professor, who provides a unique set of Starter Pokémon for young Trainers. Each region also has a unique set of eight Gym Leaders, along with the regional Elite Four."@en ;
+        rdfs:comment "Regionen sind Gebiete im Pokémon-Universum, die kleinere Teile einer Nation darstellen. Jede Region hat ihren eigenen Pokémon-Professor, der ein einzigartiges Set von Starter-Pokémon für junge Trainer zur Verfügung stellt. Jede Region verfügt außerdem über ein einzigartiges Set von acht Turnleitern sowie die regionalen Elite-Vier."@de ,
+                     "Regions are areas in the Pokémon universe that are smaller parts of a nation. Each region has their own Pokémon Professor, who provides a unique set of Starter Pokémon for young Trainers. Each region also has a unique set of eight Gym Leaders, along with the regional Elite Four."@en ;
+        rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
         rdfs:label "Region"@de ,
                    "Region"@en .
 
@@ -362,6 +426,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  http://pokemon.outofbits.com/ontology#SpecialMove
 :SpecialMove rdf:type owl:Class ;
              rdfs:subClassOf :Move ;
+             rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
              rdfs:label "Special Move"@en ,
                         "Spezialaktion"@de .
 
@@ -369,6 +434,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  http://pokemon.outofbits.com/ontology#StatusMove
 :StatusMove rdf:type owl:Class ;
             rdfs:subClassOf :Move ;
+            rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
             rdfs:label "Status Move"@en ,
                        "Statusaktion"@de .
 
@@ -376,6 +442,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  http://pokemon.outofbits.com/ontology#Town
 :Town rdf:type owl:Class ;
       rdfs:subClassOf :Place ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
       rdfs:label "Stadt"@de ,
                  "Town"@en .
 
@@ -385,6 +452,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
          rdfs:comment "Pokémon Trainer is the term commonly used for a person who catches, occasionally names, and trains several different kinds and types of Pokémon."@en ,
                       "Pokémon Trainer ist der Begriff, der häufig für eine Person verwendet wird, die mehrere verschiedene Arten und Arten von Pokémon fängt, gelegentlich benennt und trainiert."@de ;
+         rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
          rdfs:label "Trainer"@de ,
                     "Trainer"@en .
 
@@ -396,6 +464,7 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
                           ) ;
       rdfs:comment "All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense."@en ,
                    "Allen Pokémon-Kreaturen und ihren Attacken werden bestimmte Typen zugeordnet. Jeder Typ hat mehrere Stärken und Schwächen sowohl in Angriff als auch in Verteidigung."@de ;
+      rdfs:isDefinedBy <http://pokemon.outofbits.com/ontology> ;
       rdfs:label "Typ"@de ,
                  "Type"@en .
 
