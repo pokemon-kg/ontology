@@ -1,9 +1,10 @@
-
-widoco_version="1.4.11"
-
-download-widoco:
-	./get_cache_or_download.sh "widoco" "widoco-${widoco_version}-jar-with-dependencies.jar" "https://github.com/dgarijo/Widoco/releases/download/v${widoco_version}/" 
+WIDOCO_VERSION="1.4.15-pre"
 
 create-widoco-documentation:
-	mkdir -p "ontology"
-	java -jar "widoco/widoco-${widoco_version}-jar-with-dependencies.jar" -confFile config.properties -ontFile "pokemon.ttl" -outFolder "ontology" -rewriteBase -lang de-en -webVowl -htaccess -rewriteAll
+	docker run -v "$(shell pwd):/ont" "khaller/widoco:${WIDOCO_VERSION}" \
+		-confFile /ont/config.properties \
+		-ontFile /ont/pokemon.ttl \
+		-outFolder /ont/pokeont \
+		-lang "en" \
+		-webVowl \
+		-rewriteAll
