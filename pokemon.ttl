@@ -10,6 +10,7 @@
 @prefix shape: <https://purl.org/pokeont#Shape:> .
 @prefix flavor: <https://purl.org/pokeont#Flavor:> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix egggroup: <https://purl.org/pokeont#EggGroup:> .
 @prefix poketype: <https://purl.org/pokeont#PokéType:> .
 @base <https://purl.org/pokeont> .
@@ -149,6 +150,14 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "features Species"@en .
 
 
+###  https://purl.org/pokeont#hasColour
+:hasColour rdf:type owl:ObjectProperty ;
+           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:range dbo:Colour ;
+           rdfs:label "has colour"@en ,
+                      "hat Farbe"@de .
+
+
 ###  https://purl.org/pokeont#hasFlavor
 :hasFlavor rdf:type owl:ObjectProperty ;
            rdfs:domain :Food ;
@@ -173,8 +182,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasShape rdf:type owl:ObjectProperty ;
           rdfs:domain :Species ;
           rdfs:range :Shape ;
-          rdfs:label <https://purl.org/pokeont> ,
-                     "has shape"@en ,
+          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:label "has shape"@en ,
                      "hat Silhouette"@de .
 
 
@@ -240,13 +249,6 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
           rdfs:range xsd:integer ;
           rdfs:label "has firmness"@en ,
                      "hat Güte"@de .
-
-
-###  https://purl.org/pokeont#hasColor
-:hasColor rdf:type owl:DatatypeProperty ;
-          rdfs:domain :Pokémon ;
-          rdfs:label "has color"@en ,
-                     "hat Farbe"@de .
 
 
 ###  https://purl.org/pokeont#smoothness
