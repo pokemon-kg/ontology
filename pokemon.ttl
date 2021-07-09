@@ -1,5 +1,6 @@
 @prefix : <https://purl.org/pokeont#> .
 @prefix cc: <http://creativecommons.org/ns#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -10,7 +11,7 @@
 @prefix shape: <https://purl.org/pokeont#Shape:> .
 @prefix flavor: <https://purl.org/pokeont#Flavor:> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix habitat: <https://purl.org/pokeont#Habitat:> .
 @prefix egggroup: <https://purl.org/pokeont#EggGroup:> .
 @prefix poketype: <https://purl.org/pokeont#PokéType:> .
 @base <https://purl.org/pokeont> .
@@ -150,10 +151,19 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "features Species"@en .
 
 
+###  https://purl.org/pokeont#foundIn
+:foundIn rdf:type owl:ObjectProperty ;
+         rdfs:domain :Species ;
+         rdfs:range :Habitat ;
+         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:label "found in"@en ,
+                    "kommt vor in"@de .
+
+
 ###  https://purl.org/pokeont#hasColour
 :hasColour rdf:type owl:ObjectProperty ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
            rdfs:range dbo:Colour ;
+           rdfs:isDefinedBy <https://purl.org/pokeont> ;
            rdfs:label "has colour"@en ,
                       "hat Farbe"@de .
 
@@ -263,6 +273,10 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
+###  http://dbpedia.org/ontology/Colour
+dbo:Colour rdf:type owl:Class .
+
+
 ###  http://xmlns.com/foaf/0.1/Person
 <http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class .
 
@@ -352,6 +366,13 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
            rdfs:isDefinedBy <https://purl.org/pokeont> ;
            rdfs:label "Arenaleiter"@de ,
                       "Gym Leader"@en .
+
+
+###  https://purl.org/pokeont#Habitat
+:Habitat rdf:type owl:Class ;
+         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:label "Habitat"@en ,
+                    "Lebensraum"@de .
 
 
 ###  https://purl.org/pokeont#HoldItem
@@ -701,6 +722,69 @@ flavor:Sweet rdf:type owl:NamedIndividual ,
                       :Flavor ;
              rdfs:label "sweet"@en ,
                         "süß"@de .
+
+
+###  https://purl.org/pokeont#Habitat:Cave
+habitat:Cave rdf:type owl:NamedIndividual ,
+                      :Habitat ;
+             rdfs:label "Cave"@en ,
+                        "Höhle"@de .
+
+
+###  https://purl.org/pokeont#Habitat:Forest
+habitat:Forest rdf:type owl:NamedIndividual ,
+                        :Habitat ;
+               rdfs:label "Forest"@en ,
+                          "Wald"@de .
+
+
+###  https://purl.org/pokeont#Habitat:Grassland
+habitat:Grassland rdf:type owl:NamedIndividual ,
+                           :Habitat ;
+                  rdfs:label "Gras"@de ,
+                             "Grassland"@en .
+
+
+###  https://purl.org/pokeont#Habitat:Mountain
+habitat:Mountain rdf:type owl:NamedIndividual ,
+                          :Habitat ;
+                 rdfs:label "Berg"@de ,
+                            "Mountain"@en .
+
+
+###  https://purl.org/pokeont#Habitat:Rare
+habitat:Rare rdf:type owl:NamedIndividual ,
+                      :Habitat ;
+             rdfs:label "Rare"@en ,
+                        "Selten"@de .
+
+
+###  https://purl.org/pokeont#Habitat:RoughTerrain
+habitat:RoughTerrain rdf:type owl:NamedIndividual ,
+                              :Habitat ;
+                     rdfs:label "Rough terrain"@en ,
+                                "Wildnis"@de .
+
+
+###  https://purl.org/pokeont#Habitat:Sea
+habitat:Sea rdf:type owl:NamedIndividual ,
+                     :Habitat ;
+            rdfs:label "Sea"@en ,
+                       "Wasser"@de .
+
+
+###  https://purl.org/pokeont#Habitat:Urban
+habitat:Urban rdf:type owl:NamedIndividual ,
+                       :Habitat ;
+              rdfs:label "Stadt"@de ,
+                         "Urban"@en .
+
+
+###  https://purl.org/pokeont#Habitat:WatersEdge
+habitat:WatersEdge rdf:type owl:NamedIndividual ,
+                            :Habitat ;
+                   rdfs:label "Küste"@de ,
+                              "Water's edge"@en .
 
 
 ###  https://purl.org/pokeont#PokéType:Bug
