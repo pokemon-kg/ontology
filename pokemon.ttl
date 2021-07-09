@@ -7,6 +7,7 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix flavor: <https://purl.org/pokeont#Flavor:> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix egggroup: <https://purl.org/pokeont#EggGroup:> .
 @prefix poketype: <https://purl.org/pokeont#PokéType:> .
@@ -166,7 +167,20 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://purl.org/pokeont#hasType
 :hasType rdf:type owl:ObjectProperty ;
-         rdfs:range :Type .
+         rdfs:range :Type ;
+         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:label "has Type"@en ,
+                    "hat Typ"@de .
+
+
+###  https://purl.org/pokeont#inEggGroup
+:inEggGroup rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Species ;
+            rdfs:range :EggGroup ;
+            rdfs:isDefinedBy <https://purl.org/pokeont> ;
+            rdfs:label "in Ei-Gruppe"@de ,
+                       "in egg group"@en .
 
 
 ###  https://purl.org/pokeont#locatedIn
@@ -512,6 +526,41 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #################################################################
 #    Individuals
 #################################################################
+
+###  https://purl.org/pokeont#Flavor_Bitter
+flavor:Bitter rdf:type owl:NamedIndividual ,
+                        :Flavor ;
+               rdfs:label "bitter"@de ,
+                          "bitter"@en .
+
+
+###  https://purl.org/pokeont#Flavor_Dry
+flavor:Dry rdf:type owl:NamedIndividual ,
+                     :Flavor ;
+            rdfs:label "dry"@en ,
+                       "trocken"@de .
+
+
+###  https://purl.org/pokeont#Flavor_Sour
+flavor:Sour rdf:type owl:NamedIndividual ,
+                      :Flavor ;
+             rdfs:label "sauer"@de ,
+                        "sour"@en .
+
+
+###  https://purl.org/pokeont#Flavor_Spicy
+flavor:Spicy rdf:type owl:NamedIndividual ,
+                       :Flavor ;
+              rdfs:label "scharf"@de ,
+                         "spicy"@en .
+
+
+###  https://purl.org/pokeont#Flavor_Sweet
+flavor:Sweet rdf:type owl:NamedIndividual ,
+                       :Flavor ;
+              rdfs:label "sweet"@en ,
+                         "süß"@de .
+
 
 ###  https://purl.org/pokeont#EggGroup:Amorphous
 egggroup:Amorphous rdf:type owl:NamedIndividual ,
