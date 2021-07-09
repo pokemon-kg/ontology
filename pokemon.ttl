@@ -8,12 +8,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix egggroup: <https://purl.org/pokeont#EggGroup:> .
 @prefix poketype: <https://purl.org/pokeont#PokéType:> .
 @base <https://purl.org/pokeont> .
 
 <https://purl.org/pokeont> rdf:type owl:Ontology ;
                             owl:versionIRI <https://purl.org/pokeont/version/1.0.0> ;
-                            owl:imports <http://xmlns.com/foaf/0.1/> ;
                             cc:attributionName "Kevin Haller" ;
                             cc:attributionURL "https://purl.org/pokeont"^^xsd:anyURI ;
                             cc:license <https://creativecommons.org/licenses/by/4.0/> ;
@@ -84,20 +84,19 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                owl:inverseOf :locatedIn ;
                rdf:type owl:AsymmetricProperty ,
                         owl:TransitiveProperty ;
-               rdfs:domain [ rdf:type owl:Class ;
-                             owl:unionOf ( :Place
-                                           :Region
-                                         )
-                           ] ;
+               rdfs:domain :Place ;
                rdfs:range :Place ;
-               rdfs:comment "A place is contained to some extent in this place."@en ;
-               rdfs:label "contains place"@en .
+               rdfs:comment "A place is contained to some extent in this place."@en ,
+                            "Ein Ort ist in gewissem Maße in diesem Ort enthalten."@de ;
+               rdfs:isDefinedBy <https://purl.org/pokeont> ;
+               rdfs:label "beinhaltet Ort"@de ,
+                          "contains place"@en .
 
 
 ###  https://purl.org/pokeont#describedInPokédex
 :describedInPokédex rdf:type owl:ObjectProperty ;
                     owl:inverseOf :describesPokémon ;
-                    rdfs:domain :Pokémon ;
+                    rdfs:domain :Species ;
                     rdfs:range :PokédexEntry ;
                     rdfs:label "described in Pokédex entry"@en ,
                                "in Pokédex Eintrag beschrieben"@de .
@@ -106,9 +105,10 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  https://purl.org/pokeont#describesPokémon
 :describesPokémon rdf:type owl:ObjectProperty ;
                   rdfs:domain :PokédexEntry ;
-                  rdfs:range :Pokémon ;
+                  rdfs:range :Species ;
                   rdfs:comment "A Pokémon that is described by this Pokédex entry."@en ,
                                "Ein Pokémon, das von diesem Pokédex Eintrag beschrieben wird."@de ;
+                  rdfs:isDefinedBy <https://purl.org/pokeont> ;
                   rdfs:label "beschreibt Pokémon"@de ,
                              "describes Pokémon"@en .
 
@@ -117,29 +117,38 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :evolvesFrom rdf:type owl:ObjectProperty ;
              rdfs:domain :Pokémon ;
              rdfs:range :Pokémon ;
-             rdfs:label "evolves from"@en .
+             rdfs:comment "Diese Spezie entwickelt sich von einer anderen Spezies."@de ,
+                          "This species evolves from the other species."@en ;
+             rdfs:isDefinedBy <https://purl.org/pokeont> ;
+             rdfs:label "entwickelt sich von"@de ,
+                        "evolves from"@en .
 
 
 ###  https://purl.org/pokeont#evolvesTo
 :evolvesTo rdf:type owl:ObjectProperty ;
-           rdfs:domain :Pokémon ;
-           rdfs:range :Pokémon ;
-           rdfs:label "evolves to"@en .
+           rdfs:domain :Species ;
+           rdfs:range :Species ;
+           rdfs:comment "Diese Spezie kann sich in eine andere Spezie entwickeln."@de ,
+                        "This species can evolve in another species."@en ;
+           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:label "entwickelt sich in"@de ,
+                      "evolves to"@en .
 
 
-###  https://purl.org/pokeont#featuresPokémon
-:featuresPokémon rdf:type owl:ObjectProperty ;
+###  https://purl.org/pokeont#featuresSpecies
+:featuresSpecies rdf:type owl:ObjectProperty ;
                  rdfs:range :Pokémon ;
                  owl:propertyChainAxiom ( :hasPokédexEntry
                                           :describesPokémon
                                         ) ;
-                 rdfs:label "features Pokémon"@en .
+                 rdfs:label "features Species"@en .
 
 
 ###  https://purl.org/pokeont#hasFlavor
 :hasFlavor rdf:type owl:ObjectProperty ;
-           rdfs:domain :Berry ;
+           rdfs:domain :Food ;
            rdfs:range :Flavor ;
+           rdfs:isDefinedBy <https://purl.org/pokeont> ;
            rdfs:label "has flavor"@en ,
                       "hat Geschmacksrichtung"@de .
 
@@ -166,22 +175,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                     owl:TransitiveProperty ;
            rdfs:domain :Place ;
            rdfs:range :Place ;
-           rdfs:comment "This place is located to some extent in a place."@en ;
-           rdfs:label "located in"@en .
-
-
-###  https://purl.org/pokeont#takesPlaceInRegion
-:takesPlaceInRegion rdf:type owl:ObjectProperty ;
-                    rdfs:domain [ rdf:type owl:Class ;
-                                  owl:unionOf ( :Game
-                                                :Generation
-                                              )
-                                ] ;
-                    rdfs:range :Region ;
-                    rdfs:comment "Die Region in welcher dieses Spiel stattfindet."@de ,
-                                 "The region in which this game is taking place."@en ;
-                    rdfs:label "findet statt in der Region"@de ,
-                               "takes place in region"@en .
+           rdfs:comment "Dieser Ort befindet sich in einem gewissen Maße in einem anderen Ort."@de ,
+                        "This place is located to some extent in another place."@en ;
+           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:label "enthalten in"@de ,
+                      "located in"@en .
 
 
 #################################################################
@@ -232,19 +230,20 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                        "hat Glätte"@de .
 
 
-###  https://purl.org/pokeont#species
-:species rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Pokémon ;
-         rdfs:label "is of species"@en ,
-                    "ist von Spezie"@de .
-
-
 #################################################################
 #    Classes
 #################################################################
 
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class .
+
+
 ###  https://purl.org/pokeont#Ability
 :Ability rdf:type owl:Class ;
+         owl:disjointUnionOf ( :Flavor
+                               :Generation
+                               :Item
+                             ) ;
          rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ,
                       "Fähigkeiten wurden in Generation III als völlig neue Spielmechanik eingeführt. Jeder einzelne Pokémon hat eine Fähigkeit und kann nur eine auf einmal haben. Einige Fähigkeiten sind exklusiv für bestimmte Pokémon- und Evolutionslinien, während andere von vielen Pokémon bekannt sind."@de ;
          rdfs:isDefinedBy <https://purl.org/pokeont> ;
@@ -268,11 +267,18 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                   "Berry"@en .
 
 
+###  https://purl.org/pokeont#EggGroup
+:EggGroup rdf:type owl:Class ;
+          rdfs:comment "Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups."@en ;
+          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:label "Egg Group"@en ,
+                     "Ei-Gruppe"@de .
+
+
 ###  https://purl.org/pokeont#Flavor
 :Flavor rdf:type owl:Class ;
-        rdfs:comment """Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor attributed to them.
-
-The primary flavor mechanic is taste preferences: different Pokémon like and dislike different flavors, depending on their Nature. This usually influences the effectiveness of the food. The flavors that a Pokémon likes and dislikes correspond to the stat that its Nature raises or lowers. For example, all Pokémon who like spicy flavors have a Nature that raises their Attack, while those that dislike spicy flavors have a Nature that lowers it. Pokémon who have neutral Natures have no likes or dislikes."""@en ;
+        rdfs:comment "Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor attributed to them."@en ,
+                     "Geschmacksrichtung ist ein spezielles Attribut für Nahrung in der Pokémon-Welt. Den meisten Nahrungen können mehr als eine Geschmacksrichtung haben."@de ;
         rdfs:isDefinedBy <https://purl.org/pokeont> ;
         rdfs:label "Flavor"@en ,
                    "Geschmacksrichtung"@de .
@@ -281,7 +287,9 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  https://purl.org/pokeont#Food
 :Food rdf:type owl:Class ;
       rdfs:subClassOf :Item ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> .
+      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:label "Food"@en ,
+                 "Nahrung"@de .
 
 
 ###  https://purl.org/pokeont#Game
@@ -345,6 +353,17 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 
 ###  https://purl.org/pokeont#Move
 :Move rdf:type owl:Class ;
+      owl:disjointUnionOf ( :Flavor
+                            :Game
+                            :Generation
+                            :Item
+                            :Place
+                            :Pokédex
+                            :PokédexEntry
+                            :Pokémon
+                            :Region
+                            :Type
+                          ) ;
       rdfs:comment "A Move is a technique that a Pokémon uses during Battles. Moves are mainly used to inflict damage on the opponent. Moves usually come from a natural ability that the specific Pokémon has. Some moves can be used both inside and outside of battle. When outside of battle, moves are usually used for transportation or for removing a certain obstacle that the player runs into in the game."@en ,
                    "Eine Aktion ist eine Technik, die ein Pokémon während eines Kampfes anwendet. Züge werden hauptsächlich verwendet, um dem Gegner Schaden zuzufügen. Züge kommen normalerweise von einer natürlichen Fähigkeit, die der bestimmte Pokémon hat. Einige Züge können sowohl innerhalb als auch außerhalb des Kampfes verwendet werden. Außerhalb des Kampfes werden Züge normalerweise für den Transport oder zum Entfernen eines bestimmten Hindernisses verwendet, auf das der Spieler im Spiel stößt."@de ;
       rdfs:isDefinedBy <https://purl.org/pokeont> ;
@@ -362,8 +381,8 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 
 ###  https://purl.org/pokeont#Place
 :Place rdf:type owl:Class ;
-       rdfs:comment "Entities that have a somewhat fixed, physical extension in a region."@en ,
-                    "Entitäten, die in einer Region eine einigermaßen feste, physische Ausdehnung haben."@de ;
+       rdfs:comment "Entities that have a somewhat fixed, physical extension."@en ,
+                    "Entitäten, die eine einigermaßen feste, physische Ausdehnung haben."@de ;
        rdfs:isDefinedBy <https://purl.org/pokeont> ;
        rdfs:label "Ort"@de ,
                   "Place"@en .
@@ -416,8 +435,9 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 
 ###  https://purl.org/pokeont#Region
 :Region rdf:type owl:Class ;
-        rdfs:comment "Regionen sind Gebiete im Pokémon-Universum, die kleinere Teile einer Nation darstellen. Jede Region hat ihren eigenen Pokémon-Professor, der ein einzigartiges Set von Starter-Pokémon für junge Trainer zur Verfügung stellt. Jede Region verfügt außerdem über ein einzigartiges Set von acht Turnleitern sowie die regionalen Elite-Vier."@de ,
-                     "Regions are areas in the Pokémon universe that are smaller parts of a nation. Each region has their own Pokémon Professor, who provides a unique set of Starter Pokémon for young Trainers. Each region also has a unique set of eight Gym Leaders, along with the regional Elite Four."@en ;
+        rdfs:subClassOf :Place ;
+        rdfs:comment "Regionen sind Gebiete im Pokémon-Universum, die kleinere Teile einer Nation darstellen."@de ,
+                     "Regions are areas in the Pokémon universe that are smaller parts of a nation."@en ;
         rdfs:isDefinedBy <https://purl.org/pokeont> ;
         rdfs:label "Region"@de ,
                    "Region"@en .
@@ -429,6 +449,26 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
              rdfs:isDefinedBy <https://purl.org/pokeont> ;
              rdfs:label "Special Move"@en ,
                         "Spezialaktion"@de .
+
+
+###  https://purl.org/pokeont#Species
+:Species rdf:type owl:Class ;
+         owl:disjointUnionOf ( :Ability
+                               :EggGroup
+                               :Flavor
+                               :Game
+                               :Generation
+                               :Item
+                               :Move
+                               :Pokédex
+                               :PokédexEntry
+                               :Pokémon
+                               :Region
+                               :Type
+                             ) ;
+         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:label "Species"@en ,
+                    "Spezie"@de .
 
 
 ###  https://purl.org/pokeont#StatusMove
@@ -450,8 +490,8 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 ###  https://purl.org/pokeont#Trainer
 :Trainer rdf:type owl:Class ;
          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
-         rdfs:comment "Pokémon Trainer is the term commonly used for a person who catches, occasionally names, and trains several different kinds and types of Pokémon."@en ,
-                      "Pokémon Trainer ist der Begriff, der häufig für eine Person verwendet wird, die mehrere verschiedene Arten und Arten von Pokémon fängt, gelegentlich benennt und trainiert."@de ;
+         rdfs:comment "Pokémon Trainer is a person who catches, occasionally names, and trains different kinds of Pokémon."@en ,
+                      "Pokémon Trainer ist eine Person, die verschiedene Arten von Pokémon fängt, gelegentlich benennt und trainiert."@de ;
          rdfs:isDefinedBy <https://purl.org/pokeont> ;
          rdfs:label "Trainer"@de ,
                     "Trainer"@en .
@@ -473,140 +513,237 @@ The primary flavor mechanic is taste preferences: different Pokémon like and di
 #    Individuals
 #################################################################
 
-###  https://purl.org/pokeont#PokéType_Bug
-:PokéType_Bug rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#EggGroup:Amorphous
+egggroup:Amorphous rdf:type owl:NamedIndividual ,
+                            :EggGroup ;
+                   rdfs:label "Amorph"@de ,
+                              "Amorphous"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Bug
+egggroup:Bug rdf:type owl:NamedIndividual ,
+                      :EggGroup ;
+             rdfs:label "Bug"@en ,
+                        "Käfer"@de .
+
+
+###  https://purl.org/pokeont#EggGroup:Dragon
+egggroup:Dragon rdf:type owl:NamedIndividual ,
+                         :EggGroup ;
+                rdfs:label "Drache"@de ,
+                           "Dragon"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Fairy
+egggroup:Fairy rdf:type owl:NamedIndividual ,
+                        :EggGroup ;
+               rdfs:label "Fairy"@en ,
+                          "Fee"@de .
+
+
+###  https://purl.org/pokeont#EggGroup:Field
+egggroup:Field rdf:type owl:NamedIndividual ,
+                        :EggGroup ;
+               rdfs:label "Feld"@de ,
+                          "Field"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Flying
+egggroup:Flying rdf:type owl:NamedIndividual ,
+                         :EggGroup ;
+                rdfs:label "Flug"@de ,
+                           "Flying"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Grass
+egggroup:Grass rdf:type owl:NamedIndividual ,
+                        :EggGroup ;
+               rdfs:label "Grass"@en ,
+                          "Pflanze"@de .
+
+
+###  https://purl.org/pokeont#EggGroup:Human-Like
+egggroup:Human-Like rdf:type owl:NamedIndividual ,
+                             :EggGroup ;
+                    rdfs:label "Human-like"@en ,
+                               "Humanotyp"@de .
+
+
+###  https://purl.org/pokeont#EggGroup:Mineral
+egggroup:Mineral rdf:type owl:NamedIndividual ,
+                          :EggGroup ;
+                 rdfs:label "Mineral"@de ,
+                            "Mineral"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Monster
+egggroup:Monster rdf:type owl:NamedIndividual ,
+                          :EggGroup ;
+                 rdfs:label "Monster"@de ,
+                            "Monster"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Water1
+egggroup:Water1 rdf:type owl:NamedIndividual ,
+                         :EggGroup ;
+                rdfs:label "Wasser 1"@de ,
+                           "Water 1"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Water2
+egggroup:Water2 rdf:type owl:NamedIndividual ,
+                         :EggGroup ;
+                rdfs:label "Wasser 2"@de ,
+                           "Water 2"@en .
+
+
+###  https://purl.org/pokeont#EggGroup:Water3
+egggroup:Water3 rdf:type owl:NamedIndividual ,
+                         :EggGroup ;
+                rdfs:label "Wasser 3"@de ,
+                           "Water 3"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Bug
+poketype:Bug rdf:type owl:NamedIndividual ,
+                      :Type ;
+             rdfs:label "Bug"@en ,
+                        "Käfer"@de .
+
+
+###  https://purl.org/pokeont#PokéType:Dark
+poketype:Dark rdf:type owl:NamedIndividual ,
                        :Type ;
-              rdfs:label "Bug"@en ,
-                         "Käfer"@de .
+              rdfs:label "Dark"@en ,
+                         "Finsternis/Unlicht"@de .
 
 
-###  https://purl.org/pokeont#PokéType_Dark
-:PokéType_Dark rdf:type owl:NamedIndividual ,
-                        :Type ;
-               rdfs:label "Dark"@en ,
-                          "Finsternis/Unlicht"@de .
-
-
-###  https://purl.org/pokeont#PokéType_Dragon
-:PokéType_Dragon rdf:type owl:NamedIndividual ,
-                          :Type ;
-                 rdfs:label "Drachen"@de ,
-                            "Dragon"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Electric
-:PokéType_Electric rdf:type owl:NamedIndividual ,
-                            :Type ;
-                   rdfs:comment "Es gibt relativ wenige Electric Pokémon; tatsächlich wurden in der dritten Generation nur vier hinzugefügt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de ,
-                                "There are relatively few Electric Pokémon; in fact only four were added in the third generation. Most are based on rodents or inanimate objects."@en ;
-                   rdfs:label "Electric"@en ,
-                              "Elektro"@de .
-
-
-###  https://purl.org/pokeont#PokéType_Fairy
-:PokéType_Fairy rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#PokéType:Dragon
+poketype:Dragon rdf:type owl:NamedIndividual ,
                          :Type ;
-                rdfs:label "Fairy"@en ,
-                           "Fee"@de .
+                rdfs:label "Drachen"@de ,
+                           "Dragon"@en .
 
 
-###  https://purl.org/pokeont#PokéType_Fighting
-:PokéType_Fighting rdf:type owl:NamedIndividual ,
-                            :Type ;
-                   rdfs:label "Fighting"@en ,
-                              "Kampf"@de .
-
-
-###  https://purl.org/pokeont#PokéType_Fire
-:PokéType_Fire rdf:type owl:NamedIndividual ,
-                        :Type ;
-               rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Feuerarten sind in den frühen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de ,
-                            "Fire is one of the three basic elemental types along with Water and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Fire types are notoriously rare in the early stages of the games so choosing the Fire variation starter is often a plus."@en ;
-               rdfs:label "Feuer"@de ,
-                          "Fire"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Flying
-:PokéType_Flying rdf:type owl:NamedIndividual ,
-                          :Type ;
-                 rdfs:label "Flug"@de ,
-                            "Flying"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Ghost
-:PokéType_Ghost rdf:type owl:NamedIndividual ,
-                         :Type ;
-                rdfs:label "Geist"@de ,
-                           "Ghost"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Grass
-:PokéType_Grass rdf:type owl:NamedIndividual ,
-                         :Type ;
-                rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären."@de ,
-                             "Grass is one of the three basic elemental types along with Fire and Water, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players."@en ;
-                rdfs:label "Grass"@en ,
-                           "Pflanze"@de .
-
-
-###  https://purl.org/pokeont#PokéType_Ground
-:PokéType_Ground rdf:type owl:NamedIndividual ,
-                          :Type ;
-                 rdfs:label "Boden"@de ,
-                            "Ground"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Ice
-:PokéType_Ice rdf:type owl:NamedIndividual ,
-                       :Type ;
-              rdfs:label "Eis"@de ,
-                         "Ice"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Normal
-:PokéType_Normal rdf:type owl:NamedIndividual ,
-                          :Type ;
-                 rdfs:comment "Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen."@de ,
-                              "The Normal type is the most basic type of Pokémon. They are very common and appear from the very first route you visit. Most Normal Pokémon are single type."@en ;
-                 rdfs:label "Normal"@de ,
-                            "Normal"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Poison
-:PokéType_Poison rdf:type owl:NamedIndividual ,
-                          :Type ;
-                 rdfs:label "Gift"@de ,
-                            "Poison"@en .
-
-
-###  https://purl.org/pokeont#PokéType_Psychic
-:PokéType_Psychic rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#PokéType:Electric
+poketype:Electric rdf:type owl:NamedIndividual ,
                            :Type ;
-                  rdfs:label "Psychic"@en ,
-                             "Psycho"@de .
+                  rdfs:comment "Es gibt relativ wenige Electric Pokémon; tatsächlich wurden in der dritten Generation nur vier hinzugefügt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de ,
+                               "There are relatively few Electric Pokémon; in fact only four were added in the third generation. Most are based on rodents or inanimate objects."@en ;
+                  rdfs:label "Electric"@en ,
+                             "Elektro"@de .
 
 
-###  https://purl.org/pokeont#PokéType_Rock
-:PokéType_Rock rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#PokéType:Fairy
+poketype:Fairy rdf:type owl:NamedIndividual ,
                         :Type ;
-               rdfs:label "Gestein"@de ,
-                          "Rock"@en .
+               rdfs:label "Fairy"@en ,
+                          "Fee"@de .
 
 
-###  https://purl.org/pokeont#PokéType_Steel
-:PokéType_Steel rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#PokéType:Fighting
+poketype:Fighting rdf:type owl:NamedIndividual ,
+                           :Type ;
+                  rdfs:label "Fighting"@en ,
+                             "Kampf"@de .
+
+
+###  https://purl.org/pokeont#PokéType:Fire
+poketype:Fire rdf:type owl:NamedIndividual ,
+                       :Type ;
+              rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Feuerarten sind in den frühen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de ,
+                           "Fire is one of the three basic elemental types along with Water and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Fire types are notoriously rare in the early stages of the games so choosing the Fire variation starter is often a plus."@en ;
+              rdfs:label "Feuer"@de ,
+                         "Fire"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Flying
+poketype:Flying rdf:type owl:NamedIndividual ,
                          :Type ;
-                rdfs:label "Stahl"@de ,
-                           "Steel"@en .
+                rdfs:label "Flug"@de ,
+                           "Flying"@en .
 
 
-###  https://purl.org/pokeont#PokéType_Water
-:PokéType_Water rdf:type owl:NamedIndividual ,
+###  https://purl.org/pokeont#PokéType:Ghost
+poketype:Ghost rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:label "Geist"@de ,
+                          "Ghost"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Grass
+poketype:Grass rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären."@de ,
+                            "Grass is one of the three basic elemental types along with Fire and Water, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players."@en ;
+               rdfs:label "Grass"@en ,
+                          "Pflanze"@de .
+
+
+###  https://purl.org/pokeont#PokéType:Ground
+poketype:Ground rdf:type owl:NamedIndividual ,
                          :Type ;
-                rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de ,
-                             "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
-                rdfs:label "Wasser"@de ,
-                           "Water"@en .
+                rdfs:label "Boden"@de ,
+                           "Ground"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Ice
+poketype:Ice rdf:type owl:NamedIndividual ,
+                      :Type ;
+             rdfs:label "Eis"@de ,
+                        "Ice"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Normal
+poketype:Normal rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:comment "Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen."@de ,
+                             "The Normal type is the most basic type of Pokémon. They are very common and appear from the very first route you visit. Most Normal Pokémon are single type."@en ;
+                rdfs:label "Normal"@de ,
+                           "Normal"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Poison
+poketype:Poison rdf:type owl:NamedIndividual ,
+                         :Type ;
+                rdfs:label "Gift"@de ,
+                           "Poison"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Psychic
+poketype:Psychic rdf:type owl:NamedIndividual ,
+                          :Type ;
+                 rdfs:label "Psychic"@en ,
+                            "Psycho"@de .
+
+
+###  https://purl.org/pokeont#PokéType:Rock
+poketype:Rock rdf:type owl:NamedIndividual ,
+                       :Type ;
+              rdfs:label "Gestein"@de ,
+                         "Rock"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Shadow
+poketype:Shadow rdf:type owl:NamedIndividual ;
+                rdfs:label "Crypto"@de ,
+                           "Shadow"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Steel
+poketype:Steel rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:label "Stahl"@de ,
+                          "Steel"@en .
+
+
+###  https://purl.org/pokeont#PokéType:Water
+poketype:Water rdf:type owl:NamedIndividual ,
+                        :Type ;
+               rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de ,
+                            "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
+               rdfs:label "Wasser"@de ,
+                          "Water"@en .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
