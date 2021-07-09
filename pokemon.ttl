@@ -7,6 +7,7 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix shape: <https://purl.org/pokeont#Shape:> .
 @prefix flavor: <https://purl.org/pokeont#Flavor:> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix egggroup: <https://purl.org/pokeont#EggGroup:> .
@@ -97,6 +98,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  https://purl.org/pokeont#describedInPokédex
 :describedInPokédex rdf:type owl:ObjectProperty ;
                     owl:inverseOf :describesPokémon ;
+                    rdf:type owl:InverseFunctionalProperty ;
                     rdfs:domain :Species ;
                     rdfs:range :PokédexEntry ;
                     rdfs:label "described in Pokédex entry"@en ,
@@ -104,7 +106,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
 ###  https://purl.org/pokeont#describesPokémon
-:describesPokémon rdf:type owl:ObjectProperty ;
+:describesPokémon rdf:type owl:ObjectProperty ,
+                           owl:FunctionalProperty ;
                   rdfs:domain :PokédexEntry ;
                   rdfs:range :Species ;
                   rdfs:comment "A Pokémon that is described by this Pokédex entry."@en ,
@@ -116,8 +119,9 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://purl.org/pokeont#evolvesFrom
 :evolvesFrom rdf:type owl:ObjectProperty ;
-             rdfs:domain :Pokémon ;
-             rdfs:range :Pokémon ;
+             owl:inverseOf :evolvesTo ;
+             rdfs:domain :Species ;
+             rdfs:range :Species ;
              rdfs:comment "Diese Spezie entwickelt sich von einer anderen Spezies."@de ,
                           "This species evolves from the other species."@en ;
              rdfs:isDefinedBy <https://purl.org/pokeont> ;
@@ -138,7 +142,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://purl.org/pokeont#featuresSpecies
 :featuresSpecies rdf:type owl:ObjectProperty ;
-                 rdfs:range :Pokémon ;
+                 rdfs:range :Species ;
                  owl:propertyChainAxiom ( :hasPokédexEntry
                                           :describesPokémon
                                         ) ;
@@ -163,6 +167,15 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                               "Ein Pokédex Eintrag in welchen über dieses Pokémon informiert wird."@de ;
                  rdfs:label "has Pokédex entry"@en ,
                             "hat Pokédex Eintrag"@de .
+
+
+###  https://purl.org/pokeont#hasShape
+:hasShape rdf:type owl:ObjectProperty ;
+          rdfs:domain :Species ;
+          rdfs:range :Shape ;
+          rdfs:label <https://purl.org/pokeont> ,
+                     "has shape"@en ,
+                     "hat Silhouette"@de .
 
 
 ###  https://purl.org/pokeont#hasType
@@ -455,6 +468,27 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
         rdfs:isDefinedBy <https://purl.org/pokeont> ;
         rdfs:label "Region"@de ,
                    "Region"@en .
+
+
+###  https://purl.org/pokeont#Shape
+:Shape rdf:type owl:Class ;
+       owl:disjointUnionOf ( :Ability
+                             :EggGroup
+                             :Flavor
+                             :Game
+                             :Generation
+                             :Item
+                             :Move
+                             :Place
+                             :Pokédex
+                             :PokédexEntry
+                             :Pokémon
+                             :Species
+                             :Type
+                           ) ;
+       rdfs:isDefinedBy <https://purl.org/pokeont> ;
+       rdfs:label "Shape"@en ,
+                  "Silhouette"@de .
 
 
 ###  https://purl.org/pokeont#SpecialMove
@@ -807,6 +841,76 @@ poketype:Water rdf:type owl:NamedIndividual ,
                             "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter Pokémon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 Pokémon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
                rdfs:label "Wasser"@de ,
                           "Water"@en .
+
+
+###  https://purl.org/pokeont#Shape:Armor
+shape:Armor rdf:type owl:NamedIndividual ,
+                     :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Arms
+shape:Arms rdf:type owl:NamedIndividual ,
+                    :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Ball
+shape:Ball rdf:type owl:NamedIndividual ,
+                    :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Blob
+shape:Blob rdf:type owl:NamedIndividual ,
+                    :Shape .
+
+
+###  https://purl.org/pokeont#Shape:BugWings
+shape:BugWings rdf:type owl:NamedIndividual ,
+                        :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Fish
+shape:Fish rdf:type owl:NamedIndividual ,
+                    :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Heads
+shape:Heads rdf:type owl:NamedIndividual ,
+                     :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Humanoid
+shape:Humanoid rdf:type owl:NamedIndividual ,
+                        :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Legs
+shape:Legs rdf:type owl:NamedIndividual ,
+                    :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Quadruped
+shape:Quadruped rdf:type owl:NamedIndividual ,
+                         :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Squiggle
+shape:Squiggle rdf:type owl:NamedIndividual ,
+                        :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Tentacles
+shape:Tentacles rdf:type owl:NamedIndividual ,
+                         :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Upright
+shape:Upright rdf:type owl:NamedIndividual ,
+                       :Shape .
+
+
+###  https://purl.org/pokeont#Shape:Wings
+shape:Wings rdf:type owl:NamedIndividual ,
+                     :Shape .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
