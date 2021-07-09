@@ -527,41 +527,6 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
-###  https://purl.org/pokeont#Flavor_Bitter
-flavor:Bitter rdf:type owl:NamedIndividual ,
-                        :Flavor ;
-               rdfs:label "bitter"@de ,
-                          "bitter"@en .
-
-
-###  https://purl.org/pokeont#Flavor_Dry
-flavor:Dry rdf:type owl:NamedIndividual ,
-                     :Flavor ;
-            rdfs:label "dry"@en ,
-                       "trocken"@de .
-
-
-###  https://purl.org/pokeont#Flavor_Sour
-flavor:Sour rdf:type owl:NamedIndividual ,
-                      :Flavor ;
-             rdfs:label "sauer"@de ,
-                        "sour"@en .
-
-
-###  https://purl.org/pokeont#Flavor_Spicy
-flavor:Spicy rdf:type owl:NamedIndividual ,
-                       :Flavor ;
-              rdfs:label "scharf"@de ,
-                         "spicy"@en .
-
-
-###  https://purl.org/pokeont#Flavor_Sweet
-flavor:Sweet rdf:type owl:NamedIndividual ,
-                       :Flavor ;
-              rdfs:label "sweet"@en ,
-                         "süß"@de .
-
-
 ###  https://purl.org/pokeont#EggGroup:Amorphous
 egggroup:Amorphous rdf:type owl:NamedIndividual ,
                             :EggGroup ;
@@ -574,6 +539,13 @@ egggroup:Bug rdf:type owl:NamedIndividual ,
                       :EggGroup ;
              rdfs:label "Bug"@en ,
                         "Käfer"@de .
+
+
+###  https://purl.org/pokeont#EggGroup:Ditto
+egggroup:Ditto rdf:type owl:NamedIndividual ,
+                        :EggGroup ;
+               rdfs:label "Ditto"@de ,
+                          "Ditto"@en .
 
 
 ###  https://purl.org/pokeont#EggGroup:Dragon
@@ -632,6 +604,13 @@ egggroup:Monster rdf:type owl:NamedIndividual ,
                             "Monster"@en .
 
 
+###  https://purl.org/pokeont#EggGroup:Undiscovered
+egggroup:Undiscovered rdf:type owl:NamedIndividual ,
+                               :EggGroup ;
+                      rdfs:label "No Eggs Discovered"@en ,
+                                 "Unbekannt"@de .
+
+
 ###  https://purl.org/pokeont#EggGroup:Water1
 egggroup:Water1 rdf:type owl:NamedIndividual ,
                          :EggGroup ;
@@ -651,6 +630,41 @@ egggroup:Water3 rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Wasser 3"@de ,
                            "Water 3"@en .
+
+
+###  https://purl.org/pokeont#Flavor:Bitter
+flavor:Bitter rdf:type owl:NamedIndividual ,
+                       :Flavor ;
+              rdfs:label "bitter"@de ,
+                         "bitter"@en .
+
+
+###  https://purl.org/pokeont#Flavor:Dry
+flavor:Dry rdf:type owl:NamedIndividual ,
+                    :Flavor ;
+           rdfs:label "dry"@en ,
+                      "trocken"@de .
+
+
+###  https://purl.org/pokeont#Flavor:Sour
+flavor:Sour rdf:type owl:NamedIndividual ,
+                     :Flavor ;
+            rdfs:label "sauer"@de ,
+                       "sour"@en .
+
+
+###  https://purl.org/pokeont#Flavor:Spicy
+flavor:Spicy rdf:type owl:NamedIndividual ,
+                      :Flavor ;
+             rdfs:label "scharf"@de ,
+                        "spicy"@en .
+
+
+###  https://purl.org/pokeont#Flavor:Sweet
+flavor:Sweet rdf:type owl:NamedIndividual ,
+                      :Flavor ;
+             rdfs:label "sweet"@en ,
+                        "süß"@de .
 
 
 ###  https://purl.org/pokeont#PokéType:Bug
