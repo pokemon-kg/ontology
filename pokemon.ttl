@@ -197,6 +197,13 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                      "hat Silhouette"@de .
 
 
+###  https://purl.org/pokeont#hasSize
+:hasSize rdf:type owl:ObjectProperty ;
+         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:label "has size"@en ,
+                    "hat Größe"@de .
+
+
 ###  https://purl.org/pokeont#hasType
 :hasType rdf:type owl:ObjectProperty ;
          rdfs:range :Type ;
@@ -239,7 +246,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                :Move
                                              )
                                ] ;
-                   rdfs:comment "effect description"@en .
+                   rdfs:label "effect description"@en .
 
 
 ###  https://purl.org/pokeont#entryNumber
@@ -249,6 +256,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
              rdfs:range xsd:int ;
              rdfs:comment "Der Pokédex Eintrag hat folgende Nummer, die eindeutig sein muss."@de ,
                           "This Pokédex entry has the given number, which has to be unique."@en ;
+             rdfs:isDefinedBy <https://purl.org/pokeont> ;
              rdfs:label "has entry number"@en ,
                         "hat Eintragsnummer"@de .
 
@@ -259,6 +267,13 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
           rdfs:range xsd:integer ;
           rdfs:label "has firmness"@en ,
                      "hat Güte"@de .
+
+
+###  https://purl.org/pokeont#hasGenus
+:hasGenus rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Species ;
+          rdfs:label "has genus"@en ,
+                     "hat Gattung"@de .
 
 
 ###  https://purl.org/pokeont#smoothness
