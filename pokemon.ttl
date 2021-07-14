@@ -14,9 +14,9 @@
 @prefix habitat: <https://pokemonkg.org/ontology#Habitat:> .
 @prefix egggroup: <https://pokemonkg.org/ontology#EggGroup:> .
 @prefix poketype: <https://pokemonkg.org/ontology#PokéType:> .
-@base <https://purl.org/pokeont> .
+@base <https://pokemonkg.org/ontology> .
 
-<https://purl.org/pokeont> rdf:type owl:Ontology ;
+<https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
                             owl:versionIRI <https://purl.org/pokeont/version/1.0.0> ;
                             cc:attributionName "Kevin Haller" ;
                             cc:attributionURL "https://purl.org/pokeont"^^xsd:anyURI ;
