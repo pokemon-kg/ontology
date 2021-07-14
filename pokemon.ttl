@@ -92,7 +92,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                rdfs:range :Place ;
                rdfs:comment "A place is contained to some extent in this place."@en ,
                             "Ein Ort ist in gewissem Maße in diesem Ort enthalten."@de ;
-               rdfs:isDefinedBy <https://purl.org/pokeont> ;
+               rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                rdfs:label "beinhaltet Ort"@de ,
                           "contains place"@en .
 
@@ -114,7 +114,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                   rdfs:range :Species ;
                   rdfs:comment "A Pokémon that is described by this Pokédex entry."@en ,
                                "Ein Pokémon, das von diesem Pokédex Eintrag beschrieben wird."@de ;
-                  rdfs:isDefinedBy <https://purl.org/pokeont> ;
+                  rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                   rdfs:label "beschreibt Pokémon"@de ,
                              "describes Pokémon"@en .
 
@@ -126,7 +126,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
              rdfs:range :Species ;
              rdfs:comment "Diese Spezie entwickelt sich von einer anderen Spezies."@de ,
                           "This species evolves from the other species."@en ;
-             rdfs:isDefinedBy <https://purl.org/pokeont> ;
+             rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
              rdfs:label "entwickelt sich von"@de ,
                         "evolves from"@en .
 
@@ -137,7 +137,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
            rdfs:range :Species ;
            rdfs:comment "Diese Spezie kann sich in eine andere Spezie entwickeln."@de ,
                         "This species can evolve in another species."@en ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
            rdfs:label "entwickelt sich in"@de ,
                       "evolves to"@en .
 
@@ -155,7 +155,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :foundIn rdf:type owl:ObjectProperty ;
          rdfs:domain :Species ;
          rdfs:range :Habitat ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "found in"@en ,
                     "kommt vor in"@de .
 
@@ -163,7 +163,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  https://pokemonkg.org/ontology#hasColour
 :hasColour rdf:type owl:ObjectProperty ;
            rdfs:range dbo:Colour ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
            rdfs:label "has colour"@en ,
                       "hat Farbe"@de .
 
@@ -172,7 +172,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasFlavor rdf:type owl:ObjectProperty ;
            rdfs:domain :Food ;
            rdfs:range :Flavor ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
            rdfs:label "has flavor"@en ,
                       "hat Geschmacksrichtung"@de .
 
@@ -192,14 +192,14 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasShape rdf:type owl:ObjectProperty ;
           rdfs:domain :Species ;
           rdfs:range :Shape ;
-          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
           rdfs:label "has shape"@en ,
                      "hat Silhouette"@de .
 
 
 ###  https://pokemonkg.org/ontology#hasSize
 :hasSize rdf:type owl:ObjectProperty ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "has size"@en ,
                     "hat Größe"@de .
 
@@ -207,7 +207,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  https://pokemonkg.org/ontology#hasType
 :hasType rdf:type owl:ObjectProperty ;
          rdfs:range :Type ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "has Type"@en ,
                     "hat Typ"@de .
 
@@ -217,7 +217,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Species ;
             rdfs:range :EggGroup ;
-            rdfs:isDefinedBy <https://purl.org/pokeont> ;
+            rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
             rdfs:label "in Ei-Gruppe"@de ,
                        "in egg group"@en .
 
@@ -230,7 +230,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
            rdfs:range :Place ;
            rdfs:comment "Dieser Ort befindet sich in einem gewissen Maße in einem anderen Ort."@de ,
                         "This place is located to some extent in another place."@en ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
            rdfs:label "enthalten in"@de ,
                       "located in"@en .
 
@@ -256,7 +256,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
              rdfs:range xsd:int ;
              rdfs:comment "Der Pokédex Eintrag hat folgende Nummer, die eindeutig sein muss."@de ,
                           "This Pokédex entry has the given number, which has to be unique."@en ;
-             rdfs:isDefinedBy <https://purl.org/pokeont> ;
+             rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
              rdfs:label "has entry number"@en ,
                         "hat Eintragsnummer"@de .
 
@@ -304,7 +304,7 @@ dbo:Colour rdf:type owl:Class .
                              ) ;
          rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon."@en ,
                       "Fähigkeiten wurden in Generation III als völlig neue Spielmechanik eingeführt. Jeder einzelne Pokémon hat eine Fähigkeit und kann nur eine auf einmal haben. Einige Fähigkeiten sind exklusiv für bestimmte Pokémon- und Evolutionslinien, während andere von vielen Pokémon bekannt sind."@de ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Ability"@en ,
                     "Fähigkeit"@de .
 
@@ -312,7 +312,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#BattleItem
 :BattleItem rdf:type owl:Class ;
             rdfs:subClassOf :Item ;
-            rdfs:isDefinedBy <https://purl.org/pokeont> .
+            rdfs:isDefinedBy <https://pokemonkg.org/ontology> .
 
 
 ###  https://pokemonkg.org/ontology#Berry
@@ -320,7 +320,7 @@ dbo:Colour rdf:type owl:Class .
        rdfs:subClassOf :Food ;
        rdfs:comment "Beeren sind kleine, saftige, fleischige Früchte. Wie in der realen Welt gibt es auch in der Pokémon-Welt eine große Vielfalt mit einer großen Auswahl an Geschmacksrichtungen, Namen und Effekten. Erstmals in den Spielen der Generation II gefunden, sind viele Beeren inzwischen zu kritischen Gegenständen im Kampf geworden, wo ihre verschiedenen Effekte die Wiederherstellung von HP und Statuszustand, Statikverbesserung und sogar Schadensverneinung beinhalten."@de ,
                     "Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since become critical held items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation."@en ;
-       rdfs:isDefinedBy <https://purl.org/pokeont> ;
+       rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
        rdfs:label "Beere"@de ,
                   "Berry"@en .
 
@@ -328,7 +328,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#EggGroup
 :EggGroup rdf:type owl:Class ;
           rdfs:comment "Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups."@en ;
-          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
           rdfs:label "Egg Group"@en ,
                      "Ei-Gruppe"@de .
 
@@ -337,7 +337,7 @@ dbo:Colour rdf:type owl:Class .
 :Flavor rdf:type owl:Class ;
         rdfs:comment "Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor attributed to them."@en ,
                      "Geschmacksrichtung ist ein spezielles Attribut für Nahrung in der Pokémon-Welt. Den meisten Nahrungen können mehr als eine Geschmacksrichtung haben."@de ;
-        rdfs:isDefinedBy <https://purl.org/pokeont> ;
+        rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
         rdfs:label "Flavor"@en ,
                    "Geschmacksrichtung"@de .
 
@@ -345,14 +345,14 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#Food
 :Food rdf:type owl:Class ;
       rdfs:subClassOf :Item ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Food"@en ,
                  "Nahrung"@de .
 
 
 ###  https://pokemonkg.org/ontology#Game
 :Game rdf:type owl:Class ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Game"@en ,
                  "Spiel"@de .
 
@@ -361,7 +361,7 @@ dbo:Colour rdf:type owl:Class .
 :Generation rdf:type owl:Class ;
             rdfs:comment "Generation bezieht sich auf die Pokémon-Spieleserie. Es ist eine Gruppe von Spielen, die zur gleichen Zeit oder etwa zur gleichen Zeit veröffentlicht wurden. Es bedeutet auch, dass Spiele in der gleichen Generation mit den anderen kompatibel sind, die den gleichen Pokémon enthalten und die Anzahl der Züge, die dort gelernt werden müssen."@de ,
                          "Generation refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned."@en ;
-            rdfs:isDefinedBy <https://purl.org/pokeont> ;
+            rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
             rdfs:label "Generation"@de ,
                        "Generation"@en .
 
@@ -369,7 +369,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#Gym
 :Gym rdf:type owl:Class ;
      rdfs:subClassOf :Place ;
-     rdfs:isDefinedBy <https://purl.org/pokeont> ;
+     rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
      rdfs:label "Arena"@de ,
                 "Gym"@en .
 
@@ -378,14 +378,14 @@ dbo:Colour rdf:type owl:Class .
 :GymLeader rdf:type owl:Class ;
            rdfs:subClassOf :Trainer ;
            rdfs:comment "A gym leader is the highest-ranking member and owner of an official Pokémon Gym. Gym leaders use their gyms and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them with a badge that's unique to that specific gym."@en ;
-           rdfs:isDefinedBy <https://purl.org/pokeont> ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
            rdfs:label "Arenaleiter"@de ,
                       "Gym Leader"@en .
 
 
 ###  https://pokemonkg.org/ontology#Habitat
 :Habitat rdf:type owl:Class ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Habitat"@en ,
                     "Lebensraum"@de .
 
@@ -393,14 +393,14 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#HoldItem
 :HoldItem rdf:type owl:Class ;
           rdfs:subClassOf :Item ;
-          rdfs:isDefinedBy <https://purl.org/pokeont> .
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> .
 
 
 ###  https://pokemonkg.org/ontology#Item
 :Item rdf:type owl:Class ;
       rdfs:comment "An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area."@en ,
                    "Ein Gegenstand ist ein Objekt in den Pokémon-Spielen, welches der Spieler aufheben, in seiner Tasche aufbewahren und in irgendeiner Weise verwenden kann. Sie haben verschiedene Verwendungsmöglichkeiten, einschließlich Heilung, Auftanken, Hilfe beim Fangen von Pokémon oder beim Betreten eines neuen Gebietes."@de ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Item"@de ,
                  "Item"@en ;
       <http://www.w3.org/2004/02/skos/core#altLabel> "Gegenstand"@de .
@@ -411,7 +411,7 @@ dbo:Colour rdf:type owl:Class .
           rdfs:subClassOf :Item ;
           rdfs:comment "Medicine items can heal various afflictions of a Pokémon."@en ,
                        "Medizin kann verschiedene Leiden eines Pokémon heilen."@de ;
-          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
           rdfs:label "Medicine"@en ,
                      "Medizin"@de .
 
@@ -431,7 +431,7 @@ dbo:Colour rdf:type owl:Class .
                           ) ;
       rdfs:comment "A Move is a technique that a Pokémon uses during Battles. Moves are mainly used to inflict damage on the opponent. Moves usually come from a natural ability that the specific Pokémon has. Some moves can be used both inside and outside of battle. When outside of battle, moves are usually used for transportation or for removing a certain obstacle that the player runs into in the game."@en ,
                    "Eine Aktion ist eine Technik, die ein Pokémon während eines Kampfes anwendet. Züge werden hauptsächlich verwendet, um dem Gegner Schaden zuzufügen. Züge kommen normalerweise von einer natürlichen Fähigkeit, die der bestimmte Pokémon hat. Einige Züge können sowohl innerhalb als auch außerhalb des Kampfes verwendet werden. Außerhalb des Kampfes werden Züge normalerweise für den Transport oder zum Entfernen eines bestimmten Hindernisses verwendet, auf das der Spieler im Spiel stößt."@de ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Aktion"@de ,
                  "Move"@en .
 
@@ -439,7 +439,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#PhysicalMove
 :PhysicalMove rdf:type owl:Class ;
               rdfs:subClassOf :Move ;
-              rdfs:isDefinedBy <https://purl.org/pokeont> ;
+              rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
               rdfs:label "Physical Move"@en ,
                          "Physische Aktion"@de .
 
@@ -448,7 +448,7 @@ dbo:Colour rdf:type owl:Class .
 :Place rdf:type owl:Class ;
        rdfs:comment "Entities that have a somewhat fixed, physical extension."@en ,
                     "Entitäten, die eine einigermaßen feste, physische Ausdehnung haben."@de ;
-       rdfs:isDefinedBy <https://purl.org/pokeont> ;
+       rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
        rdfs:label "Ort"@de ,
                   "Place"@en .
 
@@ -458,7 +458,7 @@ dbo:Colour rdf:type owl:Class .
           rdfs:subClassOf :Item ;
           rdfs:comment "A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon."@en ,
                        "Ein Poké-Ball ist eine Art von Gegenstand, der für die Aufgabe eines Trainers entscheidend ist und zum Fangen und Aufbewahren von Pokémon verwendet wird."@de ;
-          rdfs:isDefinedBy <https://purl.org/pokeont> ;
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
           rdfs:label "Poké Ball"@de ,
                      "Poké Ball"@en .
 
@@ -470,7 +470,7 @@ dbo:Colour rdf:type owl:Class .
                              ) ;
          rdfs:comment "Der Pokédex ist ein elektronisches Gerät, das entwickelt wurde, um die verschiedenen Arten von Pokémon zu katalogisieren und Informationen über sie zu liefern, die in den Videospiel-, Anime und Manga-Serien von Pokémon enthalten sind."@de ,
                       "The Pokédex is an electronic device designed to catalogue and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series."@en ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Pokédex"@de ,
                     "Pokédex"@en .
 
@@ -482,7 +482,7 @@ dbo:Colour rdf:type owl:Class .
                                     :Pokémon
                                     :Type
                                   ) ;
-              rdfs:isDefinedBy <https://purl.org/pokeont> ;
+              rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
               rdfs:label "Pokédex Eintrag"@de ,
                          "Pokédex Entry"@en .
 
@@ -492,7 +492,7 @@ dbo:Colour rdf:type owl:Class .
          owl:disjointUnionOf ( :Pokédex
                                :Type
                              ) ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Pokémon"@de ,
                     "Pokémon"@en ;
          rdfs:seeAlso <http://dbpedia.org/resource/Pok%C3%A9mon> .
@@ -503,7 +503,7 @@ dbo:Colour rdf:type owl:Class .
         rdfs:subClassOf :Place ;
         rdfs:comment "Regionen sind Gebiete im Pokémon-Universum, die kleinere Teile einer Nation darstellen."@de ,
                      "Regions are areas in the Pokémon universe that are smaller parts of a nation."@en ;
-        rdfs:isDefinedBy <https://purl.org/pokeont> ;
+        rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
         rdfs:label "Region"@de ,
                    "Region"@en .
 
@@ -524,7 +524,7 @@ dbo:Colour rdf:type owl:Class .
                              :Species
                              :Type
                            ) ;
-       rdfs:isDefinedBy <https://purl.org/pokeont> ;
+       rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
        rdfs:label "Shape"@en ,
                   "Silhouette"@de .
 
@@ -532,7 +532,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#SpecialMove
 :SpecialMove rdf:type owl:Class ;
              rdfs:subClassOf :Move ;
-             rdfs:isDefinedBy <https://purl.org/pokeont> ;
+             rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
              rdfs:label "Special Move"@en ,
                         "Spezialaktion"@de .
 
@@ -552,7 +552,7 @@ dbo:Colour rdf:type owl:Class .
                                :Region
                                :Type
                              ) ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Species"@en ,
                     "Spezie"@de .
 
@@ -560,7 +560,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#StatusMove
 :StatusMove rdf:type owl:Class ;
             rdfs:subClassOf :Move ;
-            rdfs:isDefinedBy <https://purl.org/pokeont> ;
+            rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
             rdfs:label "Status Move"@en ,
                        "Statusaktion"@de .
 
@@ -568,7 +568,7 @@ dbo:Colour rdf:type owl:Class .
 ###  https://pokemonkg.org/ontology#Town
 :Town rdf:type owl:Class ;
       rdfs:subClassOf :Place ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Stadt"@de ,
                  "Town"@en .
 
@@ -578,7 +578,7 @@ dbo:Colour rdf:type owl:Class .
          rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
          rdfs:comment "Pokémon Trainer is a person who catches, occasionally names, and trains different kinds of Pokémon."@en ,
                       "Pokémon Trainer ist eine Person, die verschiedene Arten von Pokémon fängt, gelegentlich benennt und trainiert."@de ;
-         rdfs:isDefinedBy <https://purl.org/pokeont> ;
+         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
          rdfs:label "Trainer"@de ,
                     "Trainer"@en .
 
@@ -590,7 +590,7 @@ dbo:Colour rdf:type owl:Class .
                           ) ;
       rdfs:comment "All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense."@en ,
                    "Allen Pokémon-Kreaturen und ihren Attacken werden bestimmte Typen zugeordnet. Jeder Typ hat mehrere Stärken und Schwächen sowohl in Angriff als auch in Verteidigung."@de ;
-      rdfs:isDefinedBy <https://purl.org/pokeont> ;
+      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Typ"@de ,
                  "Type"@en .
 
