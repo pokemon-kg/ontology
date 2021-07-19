@@ -17,19 +17,19 @@
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
-                            owl:versionIRI <https://purl.org/pokeont/version/1.0.0> ;
-                            cc:attributionName "Kevin Haller" ;
-                            cc:attributionURL "https://purl.org/pokeont"^^xsd:anyURI ;
-                            cc:license <https://creativecommons.org/licenses/by/4.0/> ;
-                            dcterms:created "2019-07-27T23:00:00"@en ;
-                            dcterms:creator <https://kevinhaller.dev/id#me> ;
-                            dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
-                                                "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
-                            dcterms:title "Pokémon Ontologie"@de ,
-                                          "Pokémon Ontology"@en ;
-                            bibo:status <http://purl.org/ontology/bibo/status/draft> ;
-                            vann:preferredNamespacePrefix "poke" ;
-                            vann:preferredNamespaceUri "https://pokemonkg.org/ontology#"@en .
+                                  owl:versionIRI <https://purl.org/pokeont/version/1.0.0> ;
+                                  cc:attributionName "Kevin Haller" ;
+                                  cc:attributionURL "https://purl.org/pokeont"^^xsd:anyURI ;
+                                  cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                  dcterms:created "2019-07-27T23:00:00"@en ;
+                                  dcterms:creator <https://kevinhaller.dev/id#me> ;
+                                  dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
+                                                      "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
+                                  dcterms:title "Pokémon Ontologie"@de ,
+                                                "Pokémon Ontology"@en ;
+                                  bibo:status <http://purl.org/ontology/bibo/status/draft> ;
+                                  vann:preferredNamespacePrefix "poke" ;
+                                  vann:preferredNamespaceUri "https://pokemonkg.org/ontology#"@en .
 
 #################################################################
 #    Annotation properties
@@ -103,6 +103,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                     rdf:type owl:InverseFunctionalProperty ;
                     rdfs:domain :Species ;
                     rdfs:range :PokédexEntry ;
+                    rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                     rdfs:label "described in Pokédex entry"@en ,
                                "in Pokédex Eintrag beschrieben"@de .
 
@@ -148,6 +149,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  owl:propertyChainAxiom ( :hasPokédexEntry
                                           :describesPokémon
                                         ) ;
+                 rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                  rdfs:label "features Species"@en .
 
 
@@ -184,6 +186,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:range :PokédexEntry ;
                  rdfs:comment "A Pokédex entry in which this Pokémon is described."@en ,
                               "Ein Pokédex Eintrag in welchen über dieses Pokémon informiert wird."@de ;
+                 rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
                  rdfs:label "has Pokédex entry"@en ,
                             "hat Pokédex Eintrag"@de .
 
@@ -222,6 +225,15 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                        "in egg group"@en .
 
 
+###  https://pokemonkg.org/ontology#learnsMove
+:learnsMove rdf:type owl:ObjectProperty ;
+            rdfs:domain :MoveLearning ;
+            rdfs:range :Move ;
+            rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+            rdfs:label "learns move"@en ,
+                       "lernt Aktion"@de .
+
+
 ###  https://pokemonkg.org/ontology#locatedIn
 :locatedIn rdf:type owl:ObjectProperty ,
                     owl:AsymmetricProperty ,
@@ -235,9 +247,56 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                       "located in"@en .
 
 
+###  https://pokemonkg.org/ontology#mayHaveAbility
+:mayHaveAbility rdf:type owl:ObjectProperty ;
+                rdfs:domain :Species ;
+                rdfs:range :Ability ;
+                rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+                rdfs:label "könnte Fähigkeit besitzen"@de ,
+                           "may have ability"@en .
+
+
+###  https://pokemonkg.org/ontology#mayHaveHiddenAbility
+:mayHaveHiddenAbility rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :mayHaveAbility ;
+                      rdfs:domain :Species ;
+                      rdfs:range :Ability ;
+                      rdfs:label <https://pokemonkg.org/ontology> ,
+                                 "könnte versteckte Fähigkeit haben"@de ,
+                                 "may have hidden ability"@en .
+
+
 #################################################################
 #    Data properties
 #################################################################
+
+###  https://pokemonkg.org/ontology#accuracy
+:accuracy rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Move ;
+          rdfs:range xsd:integer ;
+          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+          rdfs:label "has accuracy"@en ,
+                     "hat Genauigkeit"@de .
+
+
+###  https://pokemonkg.org/ontology#basePower
+:basePower rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Move ;
+           rdfs:range xsd:integer ;
+           rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+           rdfs:label "has base power"@en ,
+                      "hat Basisstärke"@de .
+
+
+###  https://pokemonkg.org/ontology#basePowerPoints
+:basePowerPoints rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdfs:domain :Move ;
+                 rdfs:range xsd:integer ;
+                 rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+                 rdfs:label "has base power points"@en ,
+                            "hat Basis-Angriffspunkte"@de .
+
 
 ###  https://pokemonkg.org/ontology#effectDescription
 :effectDescription rdf:type owl:DatatypeProperty ;
@@ -274,6 +333,22 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
           rdfs:domain :Species ;
           rdfs:label "has genus"@en ,
                      "hat Gattung"@de .
+
+
+###  https://pokemonkg.org/ontology#maxPowerPoints
+:maxPowerPoints rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Move ;
+                rdfs:range xsd:integer ;
+                rdfs:label <https://pokemonkg.org/ontology> ,
+                           "has maximum power points"@en ,
+                           "hat maximale Agriffspunkte"@de .
+
+
+###  https://pokemonkg.org/ontology#minLevelToLearn
+:minLevelToLearn rdf:type owl:DatatypeProperty ;
+                 rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+                 rdfs:label "braucht mininum Level zum Erlernen"@de ,
+                            "needs minimum level to learn"@en .
 
 
 ###  https://pokemonkg.org/ontology#smoothness
@@ -383,6 +458,15 @@ dbo:Colour rdf:type owl:Class .
                       "Gym Leader"@en .
 
 
+###  https://pokemonkg.org/ontology#HM
+:HM rdf:type owl:Class ;
+    rdfs:subClassOf :Item ,
+                    :MoveLearning ;
+    rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+    rdfs:label "Hidden Machine"@en ,
+               "Versteckte Maschine"@de .
+
+
 ###  https://pokemonkg.org/ontology#Habitat
 :Habitat rdf:type owl:Class ;
          rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
@@ -404,6 +488,22 @@ dbo:Colour rdf:type owl:Class .
       rdfs:label "Item"@de ,
                  "Item"@en ;
       <http://www.w3.org/2004/02/skos/core#altLabel> "Gegenstand"@de .
+
+
+###  https://pokemonkg.org/ontology#LearningByLevelingUp
+:LearningByLevelingUp rdf:type owl:Class ;
+                      rdfs:subClassOf :MoveLearning ;
+                      rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+                      rdfs:label "Erlernen durch Aufleveln"@de ,
+                                 "Learning by leveling up"@en .
+
+
+###  https://pokemonkg.org/ontology#LearningThroughBreeding
+:LearningThroughBreeding rdf:type owl:Class ;
+                         rdfs:subClassOf :MoveLearning ;
+                         rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+                         rdfs:label "Erlernen durch Züchtung"@de ,
+                                    "Learning through breeding"@en .
 
 
 ###  https://pokemonkg.org/ontology#Medicine
@@ -434,6 +534,13 @@ dbo:Colour rdf:type owl:Class .
       rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
       rdfs:label "Aktion"@de ,
                  "Move"@en .
+
+
+###  https://pokemonkg.org/ontology#MoveLearning
+:MoveLearning rdf:type owl:Class ;
+              rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
+              rdfs:label "Aktionserlernen"@de ,
+                         "Move learning"@en .
 
 
 ###  https://pokemonkg.org/ontology#PhysicalMove
@@ -563,6 +670,17 @@ dbo:Colour rdf:type owl:Class .
             rdfs:isDefinedBy <https://pokemonkg.org/ontology> ;
             rdfs:label "Status Move"@en ,
                        "Statusaktion"@de .
+
+
+###  https://pokemonkg.org/ontology#TM
+:TM rdf:type owl:Class ;
+    rdfs:subClassOf :Item ,
+                    :MoveLearning ;
+    rdfs:comment <https://pokemonkg.org/ontology> ,
+                 "A Technical Machine, or TM for short is an item that can be used to teach a Pokémon a move."@en ,
+                 "Eine Technische Maschine (TM) verhilft einem Pokémon dazu, eine bestimmte Attacke zu erlernen."@de ;
+    rdfs:label "Technical Machine"@en ,
+               "Technische Maschine"@de .
 
 
 ###  https://pokemonkg.org/ontology#Town
