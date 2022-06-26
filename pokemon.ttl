@@ -8,12 +8,12 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-@prefix shape: <https://pokemonkg.org/ontology#Shape:> .
-@prefix flavor: <https://pokemonkg.org/ontology#Flavor:> .
+@prefix shape: <https://pokemonkg.org/ontology#Shape_> .
+@prefix flavor: <https://pokemonkg.org/ontology#Flavor_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix habitat: <https://pokemonkg.org/ontology#Habitat:> .
-@prefix egggroup: <https://pokemonkg.org/ontology#EggGroup:> .
-@prefix poketype: <https://pokemonkg.org/ontology#PokéType:> .
+@prefix habitat: <https://pokemonkg.org/ontology#Habitat_> .
+@prefix egggroup: <https://pokemonkg.org/ontology#EggGroup_> .
+@prefix poketype: <https://pokemonkg.org/ontology#PokéType_> .
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
@@ -30,53 +30,6 @@
                                   bibo:status <http://purl.org/ontology/bibo/status/draft> ;
                                   vann:preferredNamespacePrefix "poke" ;
                                   vann:preferredNamespaceUri "https://pokemonkg.org/ontology#"@en .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://creativecommons.org/ns#attributionName
-cc:attributionName rdf:type owl:AnnotationProperty .
-
-
-###  http://creativecommons.org/ns#attributionURL
-cc:attributionURL rdf:type owl:AnnotationProperty .
-
-
-###  http://creativecommons.org/ns#license
-cc:license rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/created
-dcterms:created rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/creator
-dcterms:creator rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/description
-dcterms:description rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/dc/terms/title
-dcterms:title rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/ontology/bibo/status
-bibo:status rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespacePrefix
-vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
-
-
-###  http://purl.org/vocab/vann/preferredNamespaceUri
-vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#altLabel
-<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -717,231 +670,231 @@ dbo:Colour rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  https://pokemonkg.org/ontology#EggGroup:Amorphous
+###  https://pokemonkg.org/ontology#EggGroup_Amorphous
 egggroup:Amorphous rdf:type owl:NamedIndividual ,
                             :EggGroup ;
                    rdfs:label "Amorph"@de ,
                               "Amorphous"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Bug
+###  https://pokemonkg.org/ontology#EggGroup_Bug
 egggroup:Bug rdf:type owl:NamedIndividual ,
                       :EggGroup ;
              rdfs:label "Bug"@en ,
                         "Käfer"@de .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Ditto
+###  https://pokemonkg.org/ontology#EggGroup_Ditto
 egggroup:Ditto rdf:type owl:NamedIndividual ,
                         :EggGroup ;
                rdfs:label "Ditto"@de ,
                           "Ditto"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Dragon
+###  https://pokemonkg.org/ontology#EggGroup_Dragon
 egggroup:Dragon rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Drache"@de ,
                            "Dragon"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Fairy
+###  https://pokemonkg.org/ontology#EggGroup_Fairy
 egggroup:Fairy rdf:type owl:NamedIndividual ,
                         :EggGroup ;
                rdfs:label "Fairy"@en ,
                           "Fee"@de .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Field
+###  https://pokemonkg.org/ontology#EggGroup_Field
 egggroup:Field rdf:type owl:NamedIndividual ,
                         :EggGroup ;
                rdfs:label "Feld"@de ,
                           "Field"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Flying
+###  https://pokemonkg.org/ontology#EggGroup_Flying
 egggroup:Flying rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Flug"@de ,
                            "Flying"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Grass
+###  https://pokemonkg.org/ontology#EggGroup_Grass
 egggroup:Grass rdf:type owl:NamedIndividual ,
                         :EggGroup ;
                rdfs:label "Grass"@en ,
                           "Pflanze"@de .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Human-Like
+###  https://pokemonkg.org/ontology#EggGroup_Human-Like
 egggroup:Human-Like rdf:type owl:NamedIndividual ,
                              :EggGroup ;
                     rdfs:label "Human-like"@en ,
                                "Humanotyp"@de .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Mineral
+###  https://pokemonkg.org/ontology#EggGroup_Mineral
 egggroup:Mineral rdf:type owl:NamedIndividual ,
                           :EggGroup ;
                  rdfs:label "Mineral"@de ,
                             "Mineral"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Monster
+###  https://pokemonkg.org/ontology#EggGroup_Monster
 egggroup:Monster rdf:type owl:NamedIndividual ,
                           :EggGroup ;
                  rdfs:label "Monster"@de ,
                             "Monster"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Undiscovered
+###  https://pokemonkg.org/ontology#EggGroup_Undiscovered
 egggroup:Undiscovered rdf:type owl:NamedIndividual ,
                                :EggGroup ;
                       rdfs:label "No Eggs Discovered"@en ,
                                  "Unbekannt"@de .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Water1
+###  https://pokemonkg.org/ontology#EggGroup_Water1
 egggroup:Water1 rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Wasser 1"@de ,
                            "Water 1"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Water2
+###  https://pokemonkg.org/ontology#EggGroup_Water2
 egggroup:Water2 rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Wasser 2"@de ,
                            "Water 2"@en .
 
 
-###  https://pokemonkg.org/ontology#EggGroup:Water3
+###  https://pokemonkg.org/ontology#EggGroup_Water3
 egggroup:Water3 rdf:type owl:NamedIndividual ,
                          :EggGroup ;
                 rdfs:label "Wasser 3"@de ,
                            "Water 3"@en .
 
 
-###  https://pokemonkg.org/ontology#Flavor:Bitter
+###  https://pokemonkg.org/ontology#Flavor_Bitter
 flavor:Bitter rdf:type owl:NamedIndividual ,
                        :Flavor ;
               rdfs:label "bitter"@de ,
                          "bitter"@en .
 
 
-###  https://pokemonkg.org/ontology#Flavor:Dry
+###  https://pokemonkg.org/ontology#Flavor_Dry
 flavor:Dry rdf:type owl:NamedIndividual ,
                     :Flavor ;
            rdfs:label "dry"@en ,
                       "trocken"@de .
 
 
-###  https://pokemonkg.org/ontology#Flavor:Sour
+###  https://pokemonkg.org/ontology#Flavor_Sour
 flavor:Sour rdf:type owl:NamedIndividual ,
                      :Flavor ;
             rdfs:label "sauer"@de ,
                        "sour"@en .
 
 
-###  https://pokemonkg.org/ontology#Flavor:Spicy
+###  https://pokemonkg.org/ontology#Flavor_Spicy
 flavor:Spicy rdf:type owl:NamedIndividual ,
                       :Flavor ;
              rdfs:label "scharf"@de ,
                         "spicy"@en .
 
 
-###  https://pokemonkg.org/ontology#Flavor:Sweet
+###  https://pokemonkg.org/ontology#Flavor_Sweet
 flavor:Sweet rdf:type owl:NamedIndividual ,
                       :Flavor ;
              rdfs:label "sweet"@en ,
                         "süß"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Cave
+###  https://pokemonkg.org/ontology#Habitat_Cave
 habitat:Cave rdf:type owl:NamedIndividual ,
                       :Habitat ;
              rdfs:label "Cave"@en ,
                         "Höhle"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Forest
+###  https://pokemonkg.org/ontology#Habitat_Forest
 habitat:Forest rdf:type owl:NamedIndividual ,
                         :Habitat ;
                rdfs:label "Forest"@en ,
                           "Wald"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Grassland
+###  https://pokemonkg.org/ontology#Habitat_Grassland
 habitat:Grassland rdf:type owl:NamedIndividual ,
                            :Habitat ;
                   rdfs:label "Gras"@de ,
                              "Grassland"@en .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Mountain
+###  https://pokemonkg.org/ontology#Habitat_Mountain
 habitat:Mountain rdf:type owl:NamedIndividual ,
                           :Habitat ;
                  rdfs:label "Berg"@de ,
                             "Mountain"@en .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Rare
+###  https://pokemonkg.org/ontology#Habitat_Rare
 habitat:Rare rdf:type owl:NamedIndividual ,
                       :Habitat ;
              rdfs:label "Rare"@en ,
                         "Selten"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:RoughTerrain
+###  https://pokemonkg.org/ontology#Habitat_RoughTerrain
 habitat:RoughTerrain rdf:type owl:NamedIndividual ,
                               :Habitat ;
                      rdfs:label "Rough terrain"@en ,
                                 "Wildnis"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Sea
+###  https://pokemonkg.org/ontology#Habitat_Sea
 habitat:Sea rdf:type owl:NamedIndividual ,
                      :Habitat ;
             rdfs:label "Sea"@en ,
                        "Wasser"@de .
 
 
-###  https://pokemonkg.org/ontology#Habitat:Urban
+###  https://pokemonkg.org/ontology#Habitat_Urban
 habitat:Urban rdf:type owl:NamedIndividual ,
                        :Habitat ;
               rdfs:label "Stadt"@de ,
                          "Urban"@en .
 
 
-###  https://pokemonkg.org/ontology#Habitat:WatersEdge
+###  https://pokemonkg.org/ontology#Habitat_WatersEdge
 habitat:WatersEdge rdf:type owl:NamedIndividual ,
                             :Habitat ;
                    rdfs:label "Küste"@de ,
                               "Water's edge"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Bug
+###  https://pokemonkg.org/ontology#PokéType_Bug
 poketype:Bug rdf:type owl:NamedIndividual ,
                       :Type ;
              rdfs:label "Bug"@en ,
                         "Käfer"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Dark
+###  https://pokemonkg.org/ontology#PokéType_Dark
 poketype:Dark rdf:type owl:NamedIndividual ,
                        :Type ;
               rdfs:label "Dark"@en ,
                          "Finsternis/Unlicht"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Dragon
+###  https://pokemonkg.org/ontology#PokéType_Dragon
 poketype:Dragon rdf:type owl:NamedIndividual ,
                          :Type ;
                 rdfs:label "Drachen"@de ,
                            "Dragon"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Electric
+###  https://pokemonkg.org/ontology#PokéType_Electric
 poketype:Electric rdf:type owl:NamedIndividual ,
                            :Type ;
                   rdfs:comment "Es gibt relativ wenige Electric Pokémon; tatsächlich wurden in der dritten Generation nur vier hinzugefügt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de ,
@@ -950,21 +903,21 @@ poketype:Electric rdf:type owl:NamedIndividual ,
                              "Elektro"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Fairy
+###  https://pokemonkg.org/ontology#PokéType_Fairy
 poketype:Fairy rdf:type owl:NamedIndividual ,
                         :Type ;
                rdfs:label "Fairy"@en ,
                           "Fee"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Fighting
+###  https://pokemonkg.org/ontology#PokéType_Fighting
 poketype:Fighting rdf:type owl:NamedIndividual ,
                            :Type ;
                   rdfs:label "Fighting"@en ,
                              "Kampf"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Fire
+###  https://pokemonkg.org/ontology#PokéType_Fire
 poketype:Fire rdf:type owl:NamedIndividual ,
                        :Type ;
               rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Feuerarten sind in den frühen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de ,
@@ -973,21 +926,21 @@ poketype:Fire rdf:type owl:NamedIndividual ,
                          "Fire"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Flying
+###  https://pokemonkg.org/ontology#PokéType_Flying
 poketype:Flying rdf:type owl:NamedIndividual ,
                          :Type ;
                 rdfs:label "Flug"@de ,
                            "Flying"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Ghost
+###  https://pokemonkg.org/ontology#PokéType_Ghost
 poketype:Ghost rdf:type owl:NamedIndividual ,
                         :Type ;
                rdfs:label "Geist"@de ,
                           "Ghost"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Grass
+###  https://pokemonkg.org/ontology#PokéType_Grass
 poketype:Grass rdf:type owl:NamedIndividual ,
                         :Type ;
                rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären."@de ,
@@ -996,21 +949,21 @@ poketype:Grass rdf:type owl:NamedIndividual ,
                           "Pflanze"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Ground
+###  https://pokemonkg.org/ontology#PokéType_Ground
 poketype:Ground rdf:type owl:NamedIndividual ,
                          :Type ;
                 rdfs:label "Boden"@de ,
                            "Ground"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Ice
+###  https://pokemonkg.org/ontology#PokéType_Ice
 poketype:Ice rdf:type owl:NamedIndividual ,
                       :Type ;
              rdfs:label "Eis"@de ,
                         "Ice"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Normal
+###  https://pokemonkg.org/ontology#PokéType_Normal
 poketype:Normal rdf:type owl:NamedIndividual ,
                          :Type ;
                 rdfs:comment "Der Normaltyp ist der grundlegendste Typ von Pokémon. Sie sind sehr häufig und erscheinen ab der ersten Route, die Sie besuchen. Die meisten normalen Pokémon sind Einzeltypen."@de ,
@@ -1019,41 +972,41 @@ poketype:Normal rdf:type owl:NamedIndividual ,
                            "Normal"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Poison
+###  https://pokemonkg.org/ontology#PokéType_Poison
 poketype:Poison rdf:type owl:NamedIndividual ,
                          :Type ;
                 rdfs:label "Gift"@de ,
                            "Poison"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Psychic
+###  https://pokemonkg.org/ontology#PokéType_Psychic
 poketype:Psychic rdf:type owl:NamedIndividual ,
                           :Type ;
                  rdfs:label "Psychic"@en ,
                             "Psycho"@de .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Rock
+###  https://pokemonkg.org/ontology#PokéType_Rock
 poketype:Rock rdf:type owl:NamedIndividual ,
                        :Type ;
               rdfs:label "Gestein"@de ,
                          "Rock"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Shadow
+###  https://pokemonkg.org/ontology#PokéType_Shadow
 poketype:Shadow rdf:type owl:NamedIndividual ;
                 rdfs:label "Crypto"@de ,
                            "Shadow"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Steel
+###  https://pokemonkg.org/ontology#PokéType_Steel
 poketype:Steel rdf:type owl:NamedIndividual ,
                         :Type ;
                rdfs:label "Stahl"@de ,
                           "Steel"@en .
 
 
-###  https://pokemonkg.org/ontology#PokéType:Water
+###  https://pokemonkg.org/ontology#PokéType_Water
 poketype:Water rdf:type owl:NamedIndividual ,
                         :Type ;
                rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-Pokémon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklären. Wasser ist die häufigste Art mit über 100 Pokémon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de ,
@@ -1062,72 +1015,72 @@ poketype:Water rdf:type owl:NamedIndividual ,
                           "Water"@en .
 
 
-###  https://pokemonkg.org/ontology#Shape:Armor
+###  https://pokemonkg.org/ontology#Shape_Armor
 shape:Armor rdf:type owl:NamedIndividual ,
                      :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Arms
+###  https://pokemonkg.org/ontology#Shape_Arms
 shape:Arms rdf:type owl:NamedIndividual ,
                     :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Ball
+###  https://pokemonkg.org/ontology#Shape_Ball
 shape:Ball rdf:type owl:NamedIndividual ,
                     :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Blob
+###  https://pokemonkg.org/ontology#Shape_Blob
 shape:Blob rdf:type owl:NamedIndividual ,
                     :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:BugWings
+###  https://pokemonkg.org/ontology#Shape_BugWings
 shape:BugWings rdf:type owl:NamedIndividual ,
                         :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Fish
+###  https://pokemonkg.org/ontology#Shape_Fish
 shape:Fish rdf:type owl:NamedIndividual ,
                     :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Heads
+###  https://pokemonkg.org/ontology#Shape_Heads
 shape:Heads rdf:type owl:NamedIndividual ,
                      :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Humanoid
+###  https://pokemonkg.org/ontology#Shape_Humanoid
 shape:Humanoid rdf:type owl:NamedIndividual ,
                         :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Legs
+###  https://pokemonkg.org/ontology#Shape_Legs
 shape:Legs rdf:type owl:NamedIndividual ,
                     :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Quadruped
+###  https://pokemonkg.org/ontology#Shape_Quadruped
 shape:Quadruped rdf:type owl:NamedIndividual ,
                          :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Squiggle
+###  https://pokemonkg.org/ontology#Shape_Squiggle
 shape:Squiggle rdf:type owl:NamedIndividual ,
                         :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Tentacles
+###  https://pokemonkg.org/ontology#Shape_Tentacles
 shape:Tentacles rdf:type owl:NamedIndividual ,
                          :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Upright
+###  https://pokemonkg.org/ontology#Shape_Upright
 shape:Upright rdf:type owl:NamedIndividual ,
                        :Shape .
 
 
-###  https://pokemonkg.org/ontology#Shape:Wings
+###  https://pokemonkg.org/ontology#Shape_Wings
 shape:Wings rdf:type owl:NamedIndividual ,
                      :Shape .
 
