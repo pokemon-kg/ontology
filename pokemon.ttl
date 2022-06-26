@@ -17,9 +17,9 @@
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
-                                  owl:versionIRI <https://purl.org/pokeont/version/1.0.0> ;
+                                  owl:versionIRI <https://pokemonkg.org/ontology/version/1.0.0> ;
                                   cc:attributionName "Kevin Haller" ;
-                                  cc:attributionURL "https://purl.org/pokeont"^^xsd:anyURI ;
+                                  cc:attributionURL "https://pokemonkg.org/ontology"^^xsd:anyURI ;
                                   cc:license <https://creativecommons.org/licenses/by/4.0/> ;
                                   dcterms:created "2019-07-27T23:00:00"@en ;
                                   dcterms:creator <https://kevinhaller.dev/id#me> ;
