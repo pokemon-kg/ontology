@@ -15,10 +15,10 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ env.POKEMONKG_ORG_FTP_URL }}
+        server: ${POKEMONKG_ORG_FTP_URL}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
-        port: ${{ env.POKEMONKG_ORG_FTP_PORT }}
+        port: ${POKEMONKG_ORG_FTP_PORT}
         local-dir: './'
         server-dir: 'public_html/www/test'
