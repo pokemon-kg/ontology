@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'oracle'
-        java-version: ${{ vars.JAVA_VERSION }}
+        java-version: ${{ env.JAVA_VERSION }}
 
     - name: Get latest code
       uses: actions/checkout@v3
