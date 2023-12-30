@@ -30,13 +30,14 @@ jobs:
         wget https://github.com/dgarijo/Widoco/releases/download/v${WIDOCO_VERSION}/widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar
         mkdir -p /opt/widoco
         mv widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar /opt/widoco/run.jar
-    
-    - name: Create documentation
-      run: |
-        java -jar /opt/widoco/run.jar -confFile config.properties -ontFile pokemon.ttl -outFolder out -lang "en" -webVowl -rewriteAll
 
     - name: Get latest code
       uses: actions/checkout@v3
+
+    - name: Create documentation
+      run: |
+        mkdir -p out/
+        java -jar /opt/widoco/run.jar -confFile config.properties -ontFile pokemon.ttl -outFolder out -lang "en" -webVowl -rewriteAll
 
     - name: Serialize ontology into different formats
       run: |
