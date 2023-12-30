@@ -75,6 +75,6 @@ jobs:
         protocol: 'ftps'
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
-        server-dir: 'public_html/ontology'
+        server-dir: 'public_html/ontology/'
         exclude: |
-          'version/'
+          'version/**'
