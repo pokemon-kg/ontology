@@ -1,9 +1,9 @@
 on: push
-name: Deploy ontology version on pokemonkg.org
+name: Deploy ontology and documentation
 jobs:
-  deploy:
+
+  create-docs:
     name: Deploy
-    environment: pokemonkg-org
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
@@ -11,9 +11,22 @@ jobs:
       WIDOCO_VERSION: '1.4.20'
 
     steps:
+    - name: Setup Java SDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'oracle'
+        java-version: ${{ JAVA_VERSION }}
+
     - name: Get latest code
       uses: actions/checkout@v3
 
+
+  deploy:
+    name: Deploy
+    environment: pokemonkg-org
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -23,4 +36,4 @@ jobs:
         protocol: 'ftps'
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './'
-        server-dir: 'public_html/www/test/'
+        server-dir: 'public_html/test/'
