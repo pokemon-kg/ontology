@@ -54,7 +54,7 @@ jobs:
         /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=RDFXML pokemon.ttl > out/ontology.xml
         /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=JSON-LD pokemon.ttl > out/ontology.json
 
-    - name: Sync files
+    - name: Sync files to version location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
@@ -64,3 +64,16 @@ jobs:
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
         server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
+
+    - name: Sync files to version location
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+        username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
+        password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
+        protocol: 'ftps'
+        port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
+        local-dir: './out/'
+        server-dir: 'public_html/ontology'
+        exclude: |
+          'version/**'
