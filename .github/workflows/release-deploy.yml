@@ -34,6 +34,11 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v3
 
+    - name: Extract release version
+      run: |
+        export RELEASE_VERSION="${GITHUB_REF#refs/*/v}"
+        echo "RELEASE_VERSION=${RELEASE_VERSION:-nightly}" >> $GITHUB_ENV
+
     - name: Create documentation
       run: |
         mkdir -p out/
@@ -56,4 +61,4 @@ jobs:
         protocol: 'ftps'
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './'
-        server-dir: 'public_html/test/'
+        server-dir: 'public_html/ontology/${{ env.RELEASE_VERSION }}/'
