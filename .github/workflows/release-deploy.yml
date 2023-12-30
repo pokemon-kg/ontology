@@ -18,8 +18,24 @@ jobs:
         java-package: 'jre'
         java-version: ${{ env.JAVA_VERSION }}
 
+    - name: Setup Jena CLI apps
+      run: |
+        wget https://dlcdn.apache.org/jena/binaries/apache-jena-${JENA_VERSION}.tar.gz
+        tar -xzf apache-jena-${JENA_VERSION}.tar.gz
+        rm -f apache-jena-${JENA_VERSION}.tar.gz
+        mv apache-jena-${JENA_VERSION} /opt/jena
+        chmod +x /opt/jena/bin
+
     - name: Get latest code
       uses: actions/checkout@v3
+
+    - name: Serialize ontology in different formats
+      run: |
+        mkdir -p out/
+        /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=Turtle pokemon.ttl > out/ontology.ttl
+        /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=N-Triples pokemon.ttl > out/ontology.nt
+        /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=RDFXML pokemon.ttl > out/ontology.xml
+        /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=JSON-LD pokemon.ttl > out/ontology.json
 
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
