@@ -1,0 +1,22 @@
+on: push
+name: Deploy ontology version on pokemonkg.org
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:
+      JAVA_VERSION: '11'
+
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v3
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ env.POKEMONKG_ORG_FTP_URL }}
+        username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
+        password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
+        protocol: 'ftps'
+        local-dir: './'
+        server-dir: 'public_html/www/test'
