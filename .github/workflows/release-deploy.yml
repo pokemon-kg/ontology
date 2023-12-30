@@ -64,6 +64,7 @@ jobs:
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
         server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
+        dangerous-clean-slate: true
 
     - name: Sync files to version location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -76,4 +77,4 @@ jobs:
         local-dir: './out/'
         server-dir: 'public_html/ontology'
         exclude: |
-          'version/**'
+          'version/'
