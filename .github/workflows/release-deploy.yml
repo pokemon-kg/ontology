@@ -23,4 +23,4 @@ jobs:
         protocol: 'ftps'
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './'
-        server-dir: 'public_html/www/test'
+        server-dir: 'public_html/www/test/'
