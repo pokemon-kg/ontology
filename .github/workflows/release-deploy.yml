@@ -2,14 +2,14 @@ on: push
 name: Deploy ontology and documentation
 jobs:
 
-  create-docs:
-    name: Deploy
+  deploy:
+    name: Deploy ontology and documentation
+    environment: pokemonkg-org
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
       JENA_VERSION: '4.10.0'
       WIDOCO_VERSION: '1.4.20'
-
     steps:
     - name: Setup Java SDK
       uses: actions/setup-java@v4
@@ -20,13 +20,6 @@ jobs:
     - name: Get latest code
       uses: actions/checkout@v3
 
-
-  deploy:
-    name: Deploy
-    environment: pokemonkg-org
-    runs-on: ubuntu-latest
-
-    steps:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
