@@ -28,6 +28,7 @@ jobs:
     - name: Setup Widoco
       run: |
         wget https://github.com/dgarijo/Widoco/releases/download/v${WIDOCO_VERSION}/widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar
+        mkdir -p /opt/widoco
         mv widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar /opt/widoco/run.jar
     
     - name: Create documentation
