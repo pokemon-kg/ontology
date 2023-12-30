@@ -6,7 +6,9 @@ jobs:
     environment: pokemonkg-org
     runs-on: ubuntu-latest
     env:
-      JAVA_VERSION: '11'
+      JAVA_VERSION: '17'
+      JENA_VERSION: '4.10.0'
+      WIDOCO_VERSION: '1.4.20'
 
     steps:
     - name: Get latest code
