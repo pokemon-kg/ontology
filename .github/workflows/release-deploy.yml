@@ -24,12 +24,20 @@ jobs:
         tar -xzf apache-jena-${JENA_VERSION}.tar.gz
         rm -f apache-jena-${JENA_VERSION}.tar.gz
         mv apache-jena-${JENA_VERSION} /opt/jena
-        chmod +x /opt/jena/bin
+
+    - name: Setup Widoco
+      run: |
+        wget https://github.com/dgarijo/Widoco/releases/download/v${WIDOCO_VERSION}/widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar
+        mv widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar /opt/widoco/run.jar
+    
+    - name: Create documentation
+      run: |
+        java -jar /opt/widoco/run.jar -confFile config.properties -ontFile pokemon.ttl -outFolder out -lang "en" -webVowl -rewriteAll
 
     - name: Get latest code
       uses: actions/checkout@v3
 
-    - name: Serialize ontology in different formats
+    - name: Serialize ontology into different formats
       run: |
         mkdir -p out/
         /opt/jena/bin/riot --syntax=Turtle --nobase --check --strict --formatted=Turtle pokemon.ttl > out/ontology.ttl
