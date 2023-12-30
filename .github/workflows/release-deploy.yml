@@ -62,5 +62,5 @@ jobs:
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
         port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
-        local-dir: './out'
+        local-dir: './out/'
         server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
