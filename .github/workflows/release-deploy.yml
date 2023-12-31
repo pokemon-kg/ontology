@@ -1,7 +1,9 @@
 on:
   push:
-    tags:        
+    tags:
       - '*'
+    branches:
+      - 'develop'
 name: Deploy ontology and documentation
 jobs:
 
@@ -11,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
-      JENA_VERSION: '4.10.0'
       WIDOCO_VERSION: '1.4.20'
     steps:
     - name: Setup Java SDK
@@ -54,7 +55,7 @@ jobs:
         server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
         dangerous-clean-slate: true
 
-    - name: Sync files to version location
+    - name: Sync files to root location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
