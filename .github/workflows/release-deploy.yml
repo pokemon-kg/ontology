@@ -1,7 +1,11 @@
 on:
   push:
-    tags:        
+    tags:
       - '*'
+  push:
+    branches:
+      - 'develop'
+      - 'feature/**'
 name: Deploy ontology and documentation
 jobs:
 
