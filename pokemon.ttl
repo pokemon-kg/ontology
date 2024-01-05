@@ -26,7 +26,6 @@
                                   dcterms:created "2019-07-27"^^xsd:date ;
                                   dcterms:issued "2019-07-27"^^xsd:date ;
                                   dcterms:publisher <https://pokemonkg.org/> ;
-                                  dcterms:contributor "Kevin Haller" ;
                                   dcterms:creator "Kevin Haller" ;
                                   dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
                                                       "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
