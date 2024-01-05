@@ -18,8 +18,9 @@
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
-                                  owl:versionInfo "v1.0.0"^^xsd:string ;
-                                  owl:versionIRI <https://pokemonkg.org/ontology/version/1.0.0> ;
+                                  owl:versionInfo "v1.1.0"^^xsd:string ;
+                                  owl:versionIRI <https://pokemonkg.org/ontology/version/1.1.0> ;
+                                  owl:priorVersion <https://pokemonkg.org/ontology/version/1.0.0> ;
                                   cc:attributionName "PokémonKG.org Community"^^xsd:string ;
                                   cc:attributionURL "https://pokemonkg.org/ontology"^^xsd:anyURI ;
                                   cc:license <https://creativecommons.org/licenses/by/4.0/> ;
