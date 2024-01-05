@@ -58,6 +58,7 @@ jobs:
 
     - name: Sync files to root location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      if: ${{ env.RELEASE_VERSION != 'nightly' }}
       with:
         server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
