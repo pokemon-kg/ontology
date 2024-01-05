@@ -4,6 +4,7 @@ on:
       - '*'
     branches:
       - 'develop'
+      - 'feature/**'
 name: Deploy ontology and documentation
 jobs:
 
@@ -41,7 +42,7 @@ jobs:
     - name: Create documentation
       run: |
         mkdir -p out/
-        java -jar /opt/widoco/run.jar -confFile config.properties -ontFile pokemon.ttl -outFolder out -lang "en" -webVowl -rewriteAll
+        java -jar /opt/widoco/run.jar -getOntologyMetadata -ontFile pokemon.ttl -outFolder out -lang "en" -webVowl -rewriteAll
 
     - name: Sync files to version location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
