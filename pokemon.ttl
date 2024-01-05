@@ -18,14 +18,15 @@
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
+                                  owl:versionInfo "v1.0.0"^^xsd:string ;
                                   owl:versionIRI <https://pokemonkg.org/ontology/version/1.0.0> ;
-                                  cc:attributionName "Kevin Haller"^^xsd:string ;
+                                  cc:attributionName "PokémonKG.org Community"^^xsd:string ;
                                   cc:attributionURL "https://pokemonkg.org/ontology"^^xsd:anyURI ;
                                   cc:license <https://creativecommons.org/licenses/by/4.0/> ;
                                   dcterms:created "2019-07-27"^^xsd:date ;
                                   dcterms:issued "2019-07-27"^^xsd:date ;
-                                  dcterms:publisher wd:Q57303201 ;
-                                  dcterms:creator wd:Q57303201 ;
+                                  dcterms:publisher <https://pokemonkg.org/> ;
+                                  dcterms:contributor [ rdfs:label "Kevin Haller"; rdfs:seeAlso wd:Q57303201 ] ;
                                   dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
                                                       "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
                                   dcterms:title "Pokémon Ontologie"@de ,
