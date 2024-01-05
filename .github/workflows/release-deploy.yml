@@ -11,7 +11,7 @@ jobs:
   deploy:
     name: Deploy
     environment: pokemonkg-org
-    runs-on: []
+    runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
       WIDOCO_VERSION: '1.4.20'
