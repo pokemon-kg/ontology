@@ -11,25 +11,29 @@
 @prefix shape: <https://pokemonkg.org/ontology#Shape_> .
 @prefix flavor: <https://pokemonkg.org/ontology#Flavor_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
 @prefix habitat: <https://pokemonkg.org/ontology#Habitat_> .
 @prefix egggroup: <https://pokemonkg.org/ontology#EggGroup_> .
 @prefix poketype: <https://pokemonkg.org/ontology#PokéType_> .
 @base <https://pokemonkg.org/ontology> .
 
 <https://pokemonkg.org/ontology> rdf:type owl:Ontology ;
+                                  owl:versionInfo "v1.0.0"^^xsd:string ;
                                   owl:versionIRI <https://pokemonkg.org/ontology/version/1.0.0> ;
-                                  cc:attributionName "Kevin Haller" ;
+                                  cc:attributionName "PokémonKG.org Community"^^xsd:string ;
                                   cc:attributionURL "https://pokemonkg.org/ontology"^^xsd:anyURI ;
                                   cc:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                  dcterms:created "2019-07-27T23:00:00"@en ;
-                                  dcterms:creator <https://kevinhaller.dev/id#me> ;
+                                  dcterms:created "2019-07-27"^^xsd:date ;
+                                  dcterms:issued "2019-07-27"^^xsd:date ;
+                                  dcterms:publisher <https://pokemonkg.org/> ;
+                                  dcterms:creator "Kevin Haller" ;
                                   dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
                                                       "Ontology covering the Pokémon world as it is presented in games and anime television series."@en ;
                                   dcterms:title "Pokémon Ontologie"@de ,
                                                 "Pokémon Ontology"@en ;
                                   bibo:status <http://purl.org/ontology/bibo/status/draft> ;
-                                  vann:preferredNamespacePrefix "poke" ;
-                                  vann:preferredNamespaceUri "https://pokemonkg.org/ontology#"@en .
+                                  vann:preferredNamespacePrefix "poke"^^xsd:string ;
+                                  vann:preferredNamespaceUri "https://pokemonkg.org/ontology#"^^xsd:string .
 
 
 #################################################################
