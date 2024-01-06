@@ -1,0 +1,33 @@
+on:
+  push:
+name: Validate the ontology
+jobs:
+
+  check-syntax-correctness:
+    name: Check correctness of ontology syntax
+    environment: pokemonkg-org
+    runs-on: ubuntu-latest
+    env:
+      JAVA_VERSION: '17'
+      JENA_VERSION: '4.10.0'
+    steps:
+    - name: Setup Java JRE
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'adopt'
+        java-package: 'jre'
+        java-version: ${{ env.JAVA_VERSION }}
+
+    - name: Setup Jena
+      run: |
+        wget "https://dlcdn.apache.org/jena/binaries/apache-jena-${{ env.JENA_VERSION }}.tar.gz"
+        tar -xzf "apache-jena-${{ env.JENA_VERSION }}.tar.gz"
+        rm -rf "apache-jena-${{ env.JENA_VERSION }}.tar.gz"
+        mv "apache-jena-${{ env.JENA_VERSION }}" /opt/jena
+
+    - name: Get latest ontology
+      uses: actions/checkout@v3
+
+    - name: Check syntax correctness
+      run: |
+        /opt/jena/bin/riot --syntax Turtle --validate < pokemon.ttl
