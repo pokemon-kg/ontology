@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
-      JENA_VERSION: '1.4.20'
+      JENA_VERSION: '4.10.0'
     steps:
     - name: Setup Java JRE
       uses: actions/setup-java@v4
