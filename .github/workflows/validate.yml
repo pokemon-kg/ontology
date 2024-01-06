@@ -24,6 +24,7 @@ jobs:
         tar -xzf "apache-jena-fuseki-${{ env.JENA_VERSION }}.tar.gz"
         rm -rf "apache-jena-fuseki-${{ env.JENA_VERSION }}.tar.gz"
         mv "apache-jena-fuseki-${{ env.JENA_VERSION }}" /opt/jena
+        ls /opt/jena
 
     - name: Get latest ontology
       uses: actions/checkout@v3
