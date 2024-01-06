@@ -20,12 +20,10 @@ jobs:
 
     - name: Setup Jena
       run: |
-        wget "https://dlcdn.apache.org/jena/binaries/apache-jena-fuseki-${{ env.JENA_VERSION }}.tar.gz"
+        wget "https://dlcdn.apache.org/jena/binaries/apache-jena-${{ env.JENA_VERSION }}.tar.gz"
         tar -xzf "apache-jena-fuseki-${{ env.JENA_VERSION }}.tar.gz"
         rm -rf "apache-jena-fuseki-${{ env.JENA_VERSION }}.tar.gz"
         mv "apache-jena-fuseki-${{ env.JENA_VERSION }}" /opt/jena
-        chmod a+x /opt/jena/bin/*
-        ls /opt/jena/bin
 
     - name: Get latest ontology
       uses: actions/checkout@v3
