@@ -1,5 +1,18 @@
 # Pokémon Ontology
+This ontology aims to meticulously encapsulate the diverse and intricate
+universe of Pokémon, as portrayed in both the video game series and the anime
+television series. Its goal is to delve into a detailed classification and
+characterization of Pokémon species, encompassing their unique abilities,
+evolutionary paths, and elemental types.
 
+The ontology also seeks to integrate the geographical expanse of the Pokémon
+world, mapping out the various regions, cities, and landmarks pivotal to the
+Pokémon narrative. It aims to profile key human characters, including Pokémon
+trainers, Gym Leaders, and members of various organizations, highlighting their
+relationships, roles, and development throughout the series. Additionally, it is
+intended to encompass the complex system of Pokémon battles, trainer
+interactions, and the socio-economic aspects of the Pokémon world, including
+Pokémon Centers, Poké Marts, and other institutions.
 
 Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#)
 
