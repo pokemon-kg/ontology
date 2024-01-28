@@ -16,6 +16,50 @@ Pokémon Centers, Poké Marts, and other institutions.
 
 Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#)
 
+
+## Competency Questions
+These questions are used during the ontology development process to guide the
+design and to validate the final Pokémon ontology. They play a crucial role in
+ensuring that this ontology meets the needs and requirements of its intended
+use.
+
+**1. Species and Evolution:**
+* Which Pokémon can evolve into or from a specific Pokémon?
+* What are the different evolutionary stages of a given Pokémon?
+
+**2. Abilities and Types:**
+* What abilities does a particular Pokémon possess?
+* Which Pokémon types are effective against a specific type?
+
+**3. Geographical Locations:**
+* In which regions can a certain Pokémon species be found?
+* In which habitats can a certain Pokémon be encountered?
+* What are the various travel routes and pathways connecting two specific
+regions?
+
+**4. Trainer Information:**
+* Who are the Gym Leaders of a particular region, and what types of Pokémon do
+they specialize in?
+* What are the achievements of a specific Pokémon trainer?
+
+**5. Battle Mechanics:**
+* What moves can a particular Pokémon learn, and at what level?
+* How do type advantages/disadvantages work in a Pokémon battle?
+
+**6. Items and Equipment:**
+* What items are effective for healing or evolving certain Pokémon?
+* Where can specific items be found or purchased within the game world?
+
+**7. Cultural Aspects:**
+* What are the different teams and organisational units (e.g. Team Rocket)?
+* Which characters are associated with these teams?
+* What are the different Pokémon contests and festivals featured in the games or anime?
+
+**8. Socio-Economic Aspects:**
+* What role do Pokémon Centers and Poké Marts play in the Pokémon world?
+* How does the economy function in the Pokémon universe?
+
+
 ## Development
 
 Nightly (development state of) ontology: [https://pokemonkg.org/ontology/version/nightly#](https://pokemonkg.org/ontology/version/nightly)
