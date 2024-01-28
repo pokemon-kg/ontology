@@ -14,7 +14,7 @@ intended to encompass the complex system of Pokémon battles, trainer
 interactions, and the socio-economic aspects of the Pokémon world, including
 Pokémon Centers, Poké Marts, and other institutions.
 
-Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#)
+Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#) (very limited coverage)
 
 
 ## Competency Questions
