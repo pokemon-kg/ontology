@@ -41,7 +41,7 @@ jobs:
     
     - name: Update the issued date in ontology
       run: |
-        sed -i "s/{ISSUED}/$(printf '%(%Y-%m-%d)T')/g" pokemon.ttl
+        sed -i "s/1970-01-01/$(printf '%(%Y-%m-%d)T')/g" pokemon.ttl
 
     - name: Create documentation
       run: |
