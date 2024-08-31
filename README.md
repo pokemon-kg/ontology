@@ -80,7 +80,7 @@ community, use the Discussions section. It's a great place for open-ended
 conversations and sharing knowledge.
 
 3. **Contact Us:** For more direct feedback or sensitive inquiries, you can
-reach out to us via [contact@kevinhaller.dev](contact@pokemonkg.org).
+reach out to us via [contact@pokemonkg.org](contact@pokemonkg.org).
 
 
 ### Contributions
