@@ -24,8 +24,7 @@
                                   cc:attributionName "PokémonKG.org Community"^^xsd:string ;
                                   cc:attributionURL "https://pokemonkg.org/ontology"^^xsd:anyURI ;
                                   cc:license <https://creativecommons.org/licenses/by/4.0/> ;
-                                  dcterms:created "2019-07-27"^^xsd:date ;
-                                  dcterms:issued "1970-01-01"^^xsd:date ; # <- will be replaced by actual issued date during deployment
+                                  dcterms:created "1970-01-01"^^xsd:date ; # <- will be replaced by actual creation date during deployment
                                   dcterms:publisher <https://pokemonkg.org/> ;
                                   dcterms:creator "Kevin Haller" ;
                                   dcterms:description "Eine Ontologie, die versucht die Pokémon Welt, wie sie in der Anime TV Serie und in den Spielen präsentiert wird, zu beschreiben."@de ,
