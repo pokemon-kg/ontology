@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
-      JENA_VERSION: '5.10.0'
+      JENA_VERSION: '5.1.0'
     steps:
     - name: Setup Java JRE
       uses: actions/setup-java@v4
@@ -20,7 +20,7 @@ jobs:
 
     - name: Setup Jena
       run: |
-        wget "https://dlcdn.apache.org/jena/binaries/apache-jena-${{ env.JENA_VERSION }}.tar.gz"
+        wget "https://archive.apache.org/dist/jena/binaries/apache-jena-${{ env.JENA_VERSION }}.tar.gz"
         tar -xzf "apache-jena-${{ env.JENA_VERSION }}.tar.gz"
         rm -rf "apache-jena-${{ env.JENA_VERSION }}.tar.gz"
         mv "apache-jena-${{ env.JENA_VERSION }}" /opt/jena
