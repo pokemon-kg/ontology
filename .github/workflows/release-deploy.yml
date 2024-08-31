@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
-      WIDOCO_VERSION: '1.4.20'
+      WIDOCO_VERSION: '1.4.25'
     steps:
     - name: Setup Java SDK
       uses: actions/setup-java@v4
