@@ -1,18 +1,18 @@
 # Pokémon Ontology
-This ontology aims to meticulously encapsulate the diverse and intricate
-universe of Pokémon, as portrayed in both the video game series and the anime
-television series. Its goal is to delve into a detailed classification and
-characterization of Pokémon species, encompassing their unique abilities,
-evolutionary paths, and elemental types.
+This ontology aims to encapsulate the diverse and intricate universe of Pokémon,
+as portrayed in both the video game series and the anime television series. Its
+goal is to delve into a detailed classification and characterization of Pokémon
+species, encompassing their unique abilities, evolutionary paths, and
+elemental types.
 
 The ontology also seeks to integrate the geographical expanse of the Pokémon
-world, mapping out the various regions, cities, and landmarks pivotal to the
-Pokémon narrative. It aims to profile key human characters, including Pokémon
-trainers, Gym Leaders, and members of various organizations, highlighting their
-relationships, roles, and development throughout the series. Additionally, it is
-intended to encompass the complex system of Pokémon battles, trainer
-interactions, and the socio-economic aspects of the Pokémon world, including
-Pokémon Centers, Poké Marts, and other institutions.
+world, mapping out the various regions, cities, and landmarks. It aims to profile
+key human characters, including Pokémon trainers, Gym Leaders, and members of
+various organizations, highlighting their relationships, roles, and development
+throughout the series. Additionally, it is intended to encompass the complex
+system of Pokémon battles, trainer interactions, and the socio-economic aspects
+of the Pokémon world, including Pokémon Centers, Poké Marts, and other
+institutions.
 
 Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#) (very limited coverage)
 
@@ -106,14 +106,14 @@ message. Follow any commit message guidelines the project has.
 6. **Push to Your Fork:** Push the changes to your forked repository.
 
 7. **Submit a Pull Request:** Go to the original repository and submit a pull
-request from your branch to the main repository. Provide a clear description of
-your changes and the benefits they provide.
+request from your branch to the `develop` branch of the main repository. Provide
+a clear description of your changes and the benefits they provide.
 
 8. **Code Review:** Wait for a code review from the maintainers. Be open to
 feedback and make any required updates to your pull request.
 
 9. **Merge:** Once your pull request is approved, a maintainer will merge it
-into the main branch.
+into the `develop` branch.
 
 
 ## Contributors
