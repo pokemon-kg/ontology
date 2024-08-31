@@ -38,6 +38,10 @@ jobs:
         export RELEASE_VERSION=${RELEASE_VERSION:-nightly}
         echo "Extracted version: ${RELEASE_VERSION}"
         echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
+    
+    - name: Update the issued date in ontology
+      run: |
+        sed -i "s/{ISSUED}/$(printf '%(%Y-%m-%d)T')/g" pokemon.ttl
 
     - name: Create documentation
       run: |
