@@ -40,7 +40,7 @@ jobs:
         mv widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar /opt/widoco/run.jar
 
     - name: Get latest code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Update the issued date in ontology
       run: |
@@ -64,7 +64,7 @@ jobs:
         dangerous-clean-slate: true
 
     - name: Sync files to root location
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       if: ${{ inputs.RELEASE_VERSION != 'nightly' }}
       with:
         server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
