@@ -1,15 +1,26 @@
 on:
-  push:
-    tags:
-      - '*'
-    branches:
-      - 'develop'
+  workflow_call:
+    inputs:
+      RELEASE_VERSION:
+        required: true
+        type: string
+      POKEMONKG_ORG_FTP_URL:
+        required: true
+        type: string
+      POKEMONKG_ORG_FTP_PORT:
+        required: true
+        type: string
+    secrets:
+      POKEMONKG_ORG_FTP_USERNAME:
+        required: true
+      POKEMONKG_ORG_FTP_PASSWORD:
+        required: true
+      
 name: Deploy ontology and documentation
 jobs:
 
   deploy:
     name: Deploy
-    environment: pokemonkg-org
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
@@ -29,14 +40,7 @@ jobs:
         mv widoco-${WIDOCO_VERSION}-jar-with-dependencies_JDK-${JAVA_VERSION}.jar /opt/widoco/run.jar
 
     - name: Get latest code
-      uses: actions/checkout@v3
-
-    - name: Extract release version
-      run: |
-        export RELEASE_VERSION=$(echo "$GITHUB_REF" | grep -Eo "[0-9.]+$")
-        export RELEASE_VERSION=${RELEASE_VERSION:-nightly}
-        echo "Extracted version: ${RELEASE_VERSION}"
-        echo "RELEASE_VERSION=${RELEASE_VERSION}" >> $GITHUB_ENV
+      uses: actions/checkout@v4
 
     - name: Update the issued date in ontology
       run: |
@@ -50,24 +54,24 @@ jobs:
     - name: Sync files to version location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+        server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
-        port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
+        port: ${{ inputs.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
-        server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
+        server-dir: 'public_html/ontology/version/${{ inputs.RELEASE_VERSION }}/'
         dangerous-clean-slate: true
 
     - name: Sync files to root location
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      if: ${{ env.RELEASE_VERSION != 'nightly' }}
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      if: ${{ inputs.RELEASE_VERSION != 'nightly' }}
       with:
-        server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+        server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
-        port: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
+        port: ${{ inputs.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
         server-dir: 'public_html/ontology/'
         exclude: |

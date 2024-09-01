@@ -1,0 +1,11 @@
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+      - '!develop'
+name: CI of the ontology
+jobs:
+
+  validate-ontology:
+    uses: ./.github/workflows/validate.yml

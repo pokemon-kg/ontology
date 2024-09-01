@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - 'develop'
+name: CD of the ontology
+jobs:
+
+  validate-ontology:
+    uses: ./.github/workflows/validate.yml
+  
+  get-release-version:
+    runs-on: ubuntu-latest
+    outputs:
+      RELEASE_VERSION: ${{ steps.extract-version.outputs.RELEASE_VERSION }}
+    steps:
+      - name: Extract release version
+        id: extract-version
+        run: |
+          export RELEASE_VERSION=$(echo "$GITHUB_REF" | grep -Eo "[0-9.]+$")
+          echo "RELEASE_VERSION=${RELEASE_VERSION:-nightly}" >> $GITHUB_OUTPUT
+
+  deploy-ontology:
+    uses: ./.github/workflows/deploy.yml
+    needs: [validate-ontology, get-release-version]
+    with:
+      RELEASE_VERSION: ${{ needs.get-release-version.outputs.RELEASE_VERSION }}
+      POKEMONKG_ORG_FTP_URL: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+      POKEMONKG_ORG_FTP_PORT: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
+    secrets:
+      POKEMONKG_ORG_FTP_USERNAME: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
+      POKEMONKG_ORG_FTP_PASSWORD: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
