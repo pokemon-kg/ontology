@@ -10,4 +10,10 @@ jobs:
     uses: ./.github/workflows/validate.yml
 
   deploy-ontology:
-    uses: ./.github/workflows/release-deploy.yml
+    uses: ./.github/workflows/deploy.yml
+    with:
+      POKEMONKG_ORG_FTP_URL: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+      POKEMONKG_ORG_FTP_PORT: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
+    secrets:
+      POKEMONKG_ORG_FTP_USERNAME: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
+      POKEMONKG_ORG_FTP_PASSWORD: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}

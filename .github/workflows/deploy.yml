@@ -1,5 +1,18 @@
 on:
   workflow_call:
+    inputs:
+      POKEMONKG_ORG_FTP_URL:
+        required: true
+        type: string
+      POKEMONKG_ORG_FTP_PORT:
+        required: true
+        type: string
+    secrets:
+      POKEMONKG_ORG_FTP_USERNAME:
+        required: true
+      POKEMONKG_ORG_FTP_PASSWORD:
+        required: true
+      
 name: Deploy ontology and documentation
 jobs:
 
@@ -46,7 +59,7 @@ jobs:
     - name: Sync files to version location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+        server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
@@ -59,7 +72,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       if: ${{ env.RELEASE_VERSION != 'nightly' }}
       with:
-        server: ${{ vars.POKEMONKG_ORG_FTP_URL }}
+        server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
         password: ${{ secrets.POKEMONKG_ORG_FTP_PASSWORD }}
         protocol: 'ftps'
