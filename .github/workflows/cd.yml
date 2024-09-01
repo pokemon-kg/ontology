@@ -4,6 +4,9 @@ on:
       - 'develop'
       - 'feature/*'
 name: CD of the ontology
+
+environment: pokemonkg-org
+
 jobs:
 
   validate-ontology:
