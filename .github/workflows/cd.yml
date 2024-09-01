@@ -23,6 +23,7 @@ jobs:
   deploy-ontology:
     uses: ./.github/workflows/deploy.yml
     needs: [validate-ontology]
+    environment: pokemonkg-org
     with:
       RELEASE_VERSION: nightly
       POKEMONKG_ORG_FTP_URL: ${{ vars.POKEMONKG_ORG_FTP_URL }}
