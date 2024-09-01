@@ -19,7 +19,7 @@ jobs:
         id: extract-version
         run: |
           export RELEASE_VERSION=$(echo "$GITHUB_REF" | grep -Eo "[0-9.]+$")
-          echo "::set-output name=RELEASE_VERSION::${RELEASE_VERSION:-nightly}"
+          echo "RELEASE_VERSION=${RELEASE_VERSION:-nightly}" >> $GITHUB_OUTPUT
 
   deploy-ontology:
     uses: ./.github/workflows/deploy.yml
