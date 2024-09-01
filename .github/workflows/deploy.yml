@@ -1,6 +1,9 @@
 on:
   workflow_call:
     inputs:
+      RELEASE_VERSION:
+        required: true
+        type: string
       POKEMONKG_ORG_FTP_URL:
         required: true
         type: string
@@ -57,12 +60,12 @@ jobs:
         protocol: 'ftps'
         port: ${{ inputs.POKEMONKG_ORG_FTP_PORT }}
         local-dir: './out/'
-        server-dir: 'public_html/ontology/version/${{ env.RELEASE_VERSION }}/'
+        server-dir: 'public_html/ontology/version/${{ inputs.RELEASE_VERSION }}/'
         dangerous-clean-slate: true
 
     - name: Sync files to root location
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      if: ${{ env.RELEASE_VERSION != 'nightly' }}
+      if: ${{ inputs.RELEASE_VERSION != 'nightly' }}
       with:
         server: ${{ inputs.POKEMONKG_ORG_FTP_URL }}
         username: ${{ secrets.POKEMONKG_ORG_FTP_USERNAME }}
