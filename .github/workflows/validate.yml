@@ -25,7 +25,7 @@ jobs:
         mv "apache-jena-${{ env.JENA_VERSION }}" /opt/jena
 
     - name: Get latest ontology
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Check syntax correctness
       run: |
