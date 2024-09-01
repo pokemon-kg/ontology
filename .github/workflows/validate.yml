@@ -1,5 +1,5 @@
 on:
-  push:
+  workflow_call:
 name: Validate the ontology
 jobs:
 

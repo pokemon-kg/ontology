@@ -1,13 +1,5 @@
 on:
-  workflow_run:
-    workflows:
-      - Validate the ontology
-    types:
-      - completed
-#    branches:
-#      - 'main'
-#      - 'develop'
-#      - 'feature/**'
+  workflow_call:
 name: Deploy ontology and documentation
 jobs:
 
