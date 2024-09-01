@@ -1,0 +1,13 @@
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'feature/*'
+name: CD of the ontology
+jobs:
+
+  validate-ontology:
+    uses: ./.github/workflows/validate.yml
+
+  deploy-ontology:
+    uses: ./.github/workflows/release-deploy.yml
