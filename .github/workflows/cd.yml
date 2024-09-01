@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - 'develop'
-      - 'feature/*'
 name: CD of the ontology
 jobs:
 
