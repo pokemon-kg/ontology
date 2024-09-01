@@ -11,6 +11,7 @@ jobs:
 
   deploy-ontology:
     uses: ./.github/workflows/deploy.yml
+    needs: validate-ontology
     with:
       POKEMONKG_ORG_FTP_URL: ${{ vars.POKEMONKG_ORG_FTP_URL }}
       POKEMONKG_ORG_FTP_PORT: ${{ vars.POKEMONKG_ORG_FTP_PORT }}
