@@ -1,9 +1,13 @@
 on:
-  push:
-    tags:
-      - '*'
+  workflow_run:
+    workflows:
+      - 'Validate the ontology'
+    types:
+      - completed
     branches:
+      - 'main'
       - 'develop'
+      - 'feature/**'
 name: Deploy ontology and documentation
 jobs:
 
