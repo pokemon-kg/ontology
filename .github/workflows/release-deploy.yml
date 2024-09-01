@@ -4,10 +4,10 @@ on:
       - 'Validate the ontology'
     types:
       - completed
-    branches:
-      - 'main'
-      - 'develop'
-      - 'feature/**'
+#    branches:
+#      - 'main'
+#      - 'develop'
+#      - 'feature/**'
 name: Deploy ontology and documentation
 jobs:
 
