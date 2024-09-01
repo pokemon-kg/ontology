@@ -16,6 +16,7 @@ institutions.
 
 Released ontology: [https://pokemonkg.org/ontology#](https://pokemonkg.org/ontology#) (very limited coverage)
 
+Nightly (development state of) ontology: [https://pokemonkg.org/ontology/version/nightly#](https://pokemonkg.org/ontology/version/nightly)
 
 ## Competency Questions
 These questions are used during the ontology development process to guide the
