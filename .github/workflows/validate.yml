@@ -5,7 +5,6 @@ jobs:
 
   check-syntax-correctness:
     name: Check correctness of ontology syntax
-    environment: pokemonkg-org
     runs-on: ubuntu-latest
     env:
       JAVA_VERSION: '17'
